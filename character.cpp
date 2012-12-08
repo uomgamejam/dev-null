@@ -7,8 +7,10 @@
 Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(superclass), m_acc(0, -9.81, 0), m_vel(5, 0, 0), m_pos(5, 5, 0)
 {
     m_window = window;
-    m_image_running.LoadFromFile("resource/sprites/run_cycle_sheet.png");
-    m_sprite_running.SetImage(m_image_running);
+    if( !m_image_running.LoadFromFile("resource/sprites/run_cycle_sheet.png") )
+        std::cout<< "error" << std::endl;
+   else
+        m_sprite_running.SetImage(m_image_running);
 }
 
 Character::~Character()
@@ -16,9 +18,9 @@ Character::~Character()
 }
 
 void Character::display()
-{
+{   /*
     m_sprite_running.SetX(m_pos.x());
-    m_sprite_running.SetY(m_pos.y());
+    m_sprite_running.SetY(m_pos.y());*/
     m_window->Draw(m_sprite_running);
 }
 

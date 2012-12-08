@@ -25,9 +25,10 @@ int main()
         window.SetFramerateLimit(FRAMES_PER_SEC);
 
 		while(1){
-			std::cout << framecounter ++ << std::endl;
+			// std::cout << framecounter ++ << std::endl;
 			super.update();
 			super.display();
+			window.Display();
 		}
     }
     else
