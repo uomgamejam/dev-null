@@ -34,6 +34,7 @@ class Character
 		sf::Image m_image_running;
 		sf::Sprite m_sprite_running;
 		int m_offset;
+		int frame;
 };
 
 #endif

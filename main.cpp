@@ -27,6 +27,9 @@ int main()
 		while(1){
 			// std::cout << framecounter ++ << std::endl;
 			super.update();
+			window.Clear();
+			sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
+			window.Draw(rect);
 			super.display();
 			window.Display();
 		}
