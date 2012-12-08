@@ -6,13 +6,13 @@
 #ifndef __PLATFORM__HPP__
 #define __PLATFORM__HPP__
 
-class Platform()
+class Platform
 {
 
 	public:
-		platform(sf::RenderWindow);
-		platform(double, double, double, double, double, double);
-		~platform();
+		Platform(sf::RenderWindow);
+		Platform(double, double, double, double, double, double);
+		~Platform();
 		
 		void update();
 		void display();
