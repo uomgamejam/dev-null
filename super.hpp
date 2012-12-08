@@ -7,12 +7,9 @@
 
 class super{
 	
-	//public:
-		public super();
-		public ~super();
-		
-		void update();
-		void 
+	public:
+		super();
+		~super();
 		
 		void update(){
 		  movePlayer();
@@ -51,7 +48,7 @@ class super{
 		}
 		
 	        void movePlayer(){
-	          //TODO
+	          player.move();
 	        }
 	        
 	        void moveAll(){

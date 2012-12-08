@@ -12,11 +12,15 @@ class super{
 		~super();
 		
 		void update(){
+		  movePlayer();
+		  moveAll();
+		  createPlatforms();
+		  removePlatforms();
 		  display();
-		  
 		}
 		
 	protected:
+	
 	
 	private:
 		std::list<platform> platforms;
@@ -47,8 +51,9 @@ class super{
 	          //TODO
 	        }
 	        
-	        	
-	
+	        void moveAll(){
+	          //TODO
+	        }
 };
 
 #endif
