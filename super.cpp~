@@ -1,4 +1,4 @@
-#include "Super.hpp"
+#include "super.hpp"
 
 Super::Super()
 {
@@ -25,7 +25,7 @@ void Super::createPlatforms()
 {
   if (platforms.back.gx() + platforms.back.gl() + 300 < 1200)
   {
-    platform newPlatform = new platform();
+    platform newPlatform();
     platforms.push_back(newPlatform);
   }
 }
@@ -46,8 +46,12 @@ void Super::movePlayer()
 
 void Super::moveAll()
 {
+  std::list<platform>::iterator iter;
   for (i = 0; i < platforms.size(); i ++)
-    platforms.at(i).sx(platforms.at(i).x() - player.vel().x();
+  {
+    iter = std::next(platforms.begin(), i);
+    iter->sx(iter->x() - player.vel().x());
+  }
     
   player.sx(player.x() - player.vel().x());
 }
@@ -57,7 +61,7 @@ int Super::numP()
   return platforms.size();
 }
 
-platform Super::getP(int index)
+Platform Super::getP(int index)
 {
   return platforms.at(index);
 }
