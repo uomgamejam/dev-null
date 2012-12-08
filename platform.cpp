@@ -16,7 +16,6 @@ Platform::Platform(sf::RenderWindow* thewindow)
 	
 	m_pos.reset();
 	m_size.sxyz(100.0d, 100.0d, 0.0d);
-	m_vel.reset();
 }
 
 Platform::Platform(double x, double y, double w, double h)
@@ -32,14 +31,14 @@ Platform::~Platform()
 
 void Platform::update(double timestep)
 {
-	m_pos += m_vel * timestep;
+	//TODO:
 }
 
 void Platform::display()
 {
 	//TODO:
-	platformsprite.resize(size.x(), size.y());
-	window->display(platformsprite);
+	platformsprite.Resize(m_size.x(), m_size.y());
+	window->Draw(platformsprite);
 }
 
 void Platform::setpos(double x, double y)

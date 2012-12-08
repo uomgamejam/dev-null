@@ -3,7 +3,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-Character::Character(super* superclass, sf::RenderWindow* window) : thesuper(superclass), m_acc(0, -9.81, 0), m_vel(5, 0, 0), m_pos(5, 5, 0)
+Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(superclass), m_acc(0, -9.81, 0), m_vel(5, 0, 0), m_pos(5, 5, 0)
 {
     m_window = window;
     m_image_running.LoadFromFile("resource/sprites/run_cycle_sheet.png");
@@ -28,8 +28,14 @@ void Character::update(double new_time)
     m_vel.sx(m_vel.y() + m_acc.y() * (int)step_time );
     for( int i = 0; i < thesuper.getNumberPlatform(); i ++)
     {
-        collision
+        Platform* platform = getPlatform(i);
+        m_pos.sy(m_pos.y + collision(platform));
     }
+}
+
+void Character::sx( int x )
+{
+    m_pos.sx(x);
 }
 
 int Character::offset()
@@ -37,8 +43,16 @@ int Character::offset()
     return m_offsett;
 }
 
-Direction Character::collision(Platform* platform);
+int Character::collision(Platform* platform);
 {
+    if( ( m_pos.x() + m_size.x() < platform.pos().x()
+       || m_pos.y() + m_size.y() < platform.pos().y()
+       || m_pos.x() > platform.pos().x + platform.size().x()
+       || m_pos.y() > platform.pos().y + platform.size().y() )
+       && m_vel.y() < 0 )
+    {
+        return platform.pos().y - m_pos.y();
+    }
 
 }
 
