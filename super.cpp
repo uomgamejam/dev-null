@@ -25,7 +25,7 @@ void Super::createPlatforms()
 {
   if (platforms.back.gx() + platforms.back.gl() + 300 < 1200)
   {
-    platform newPlatform = new platform();
+    platform newPlatform();
     platforms.push_back(newPlatform);
   }
 }
@@ -57,7 +57,7 @@ int Super::numP()
   return platforms.size();
 }
 
-platform Super::getP(int index)
+Platform Super::getP(int index)
 {
   return platforms.at(index);
 }

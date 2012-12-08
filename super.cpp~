@@ -51,3 +51,13 @@ void Super::moveAll()
     
   player.sx(player.x() - player.vel().x());
 }
+
+int Super::numP()
+{
+  return platforms.size();
+}
+
+platform Super::getP(int index)
+{
+  return platforms.at(index);
+}

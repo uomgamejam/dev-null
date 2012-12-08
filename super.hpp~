@@ -31,6 +31,10 @@ class Super{
 	        void movePlayer();
 	        
 	        void moveAll();
+	        
+	        int numP();
+	        
+	        platform getP(int index);
 };
 
 #endif
