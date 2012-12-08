@@ -2,7 +2,7 @@
 
 #include <list>
 #include "platform.hpp"
-#include "character.hpp"
+#include "Character.hpp"
 
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
