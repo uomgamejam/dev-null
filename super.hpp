@@ -27,9 +27,6 @@ class super{
 	
 	private:
 		std::list<platform> platforms;
-<<<<<<< HEAD
-		character player;
-=======
 		character player = new character(); 
 		
 		void display(){
@@ -57,9 +54,9 @@ class super{
 	          //TODO
 	        }
 	        
-	        	
-	
->>>>>>> 5c0dd5f63a39f02b9eb09571fdfc8b7f802c267f
+	        void moveAll(){
+	          //TODO
+	        }
 };
 
 #endif
