@@ -1,19 +1,21 @@
 
 #include "vector3d.hpp"
+#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
 
 #ifndef __PLATFORM__HPP__
 #define __PLATFORM__HPP__
 
-class platform()
+class Platform()
 {
 
 	public:
-		platform();
+		platform(sf::RenderWindow);
 		platform(double, double, double, double, double, double);
 		~platform();
 		
 		void update();
-		void draw();
+		void display();
 		
 		void setpos(double, double);
 		void setsize(double, double);
@@ -26,6 +28,10 @@ class platform()
 		vector3d m_pos;
 		vector3d m_size;
 		vector3d m_vel;
+		
+		sf::Image platformimage;
+		sf::Sprite platformsprite;
+		sf::RenderWindow* window;
 };
 
 #endif

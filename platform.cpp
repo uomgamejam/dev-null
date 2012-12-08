@@ -1,46 +1,59 @@
 
 #include "platform"
 
-platform::platform()
+Platform::platform(sf::RenderWindow* thewindow)
 {
+	window = thewindow;
+	
+	if (!platformimage.LoadFromFile("./ressources/sprites/platform1.png"))
+	{
+		// Error...
+	}
+	else
+	{
+		platformsprite.SetImage(platformimage);
+	}
+	
 	m_pos.reset();
 	m_size.sxyz(100.0d, 100.0d, 0.0d);
 	m_vel.reset();
 }
 
-platform::platform(double x, double y, double w, double h, double vx, double vy);
+Platform::platform(double x, double y, double w, double h, double vx, double vy);
 {
 	m_pos.sxyz(x, y, 0.0d);
 	m_size.sxyz(w, h, 0.0d);
 	m_vel.sxyz(vx, vy, 0.0d);
 }
 
-platform::~platform()
+Platform::~platform()
 {
 	// Nothing to free
 }
 
-void platform::update(double timestep)
+void Platform::update(double timestep)
 {
 	m_pos += m_vel * timestep;
 }
 
-void platform::draw()
+void Platform::display()
 {
 	//TODO:
+	platformsprite.resize(size.x(), size.y());
+	window->draw(platformsprite)
 }
 
-void setpos(double x, double y)
+void Platform::setpos(double x, double y)
 {
 	m_pos.sxyz(x, y, 0.0d);
 }
 
-void setsize(double w, double h)
+void Platform::setsize(double w, double h)
 {
 	m_size.sxyz(w, h, 0.0d);
 }
 
-void setvel(double vx, double vy)
+void Platform::setvel(double vx, double vy)
 {
 	m_vel.sxyz(vx, vy, 0.0d);
 }

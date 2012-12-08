@@ -3,9 +3,12 @@
 #include <iostream>
 #include <fstream>
 
+const unsigned int FRAMES_PER_SEC = 40;
+static unsigned long long framecounter = 0;
+
 int main()
 {
-    std::ifstream fluxConfig("ressource//configuration.txt" );
+    std::ifstream fluxConfig("./resource/configuration.txt" );
     if ( fluxConfig)
     {
         int widthW, heightW;
@@ -16,10 +19,10 @@ int main()
         sf::RenderWindow window(sf::VideoMode(widthW, heightW, 32), "Game");
         window.UseVerticalSync(true);
 
-        window.SetFramerateLimit(0);
+        window.SetFramerateLimit(FRAMES_PER_SEC);
 
 	while(1){
-		std::cout << "hi" << std::endl;
+		std::cout << framecounter ++ << std::endl;
 	}	
     }
     else
