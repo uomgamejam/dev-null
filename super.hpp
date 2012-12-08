@@ -21,6 +21,8 @@ class Super{
 	private:
 		std::list<Platform> platforms;
 		Character player();
+		int i;
+		Iterator iter;
 
 		void display();
 

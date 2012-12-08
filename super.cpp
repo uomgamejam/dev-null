@@ -26,7 +26,7 @@ void Super::display()
 
 void Super::createPlatforms()
 {
-  if (platforms.back.x() + platforms.back.w() + 300 < 1200)
+  if (platforms.back.x() + platforms.back().w() + 300 < 1200)
   {
     platform newPlatform();
     platforms.push_back(newPlatform);
