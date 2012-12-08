@@ -10,19 +10,21 @@
 class Super{
 
 	public:
-		Super();
+		Super(sf::RenderWindow* window);
 		~Super();
 
 		void update();
+		int numP();
+		Platform getP(int index);
 
 	protected:
 
 
 	private:
 		std::list<Platform> platforms;
-		Character player();
+		Character player;
 		int i;
-		Iterator iter;
+		sf::RenderWindow* m_window;
 
 		void display();
 
@@ -34,9 +36,7 @@ class Super{
 
 	        void moveAll();
 
-	        int numP();
-
-	        Platform getP(int index);
+        sf::Clock clock;
 };
 
 #endif

@@ -4,7 +4,7 @@
 Platform::Platform(sf::RenderWindow* thewindow)
 {
 	window = thewindow;
-	
+
 	if (!platformimage.LoadFromFile("./ressources/sprites/platform1.png"))
 	{
 		// Error...
@@ -13,15 +13,15 @@ Platform::Platform(sf::RenderWindow* thewindow)
 	{
 		platformsprite.SetImage(platformimage);
 	}
-	
+
 	m_pos.reset();
-	m_size.sxyz(100.0d, 100.0d, 0.0d);
+	m_size.sxyz(100.0, 100.0, 0.0);
 }
 
 Platform::Platform(double x, double y, double w, double h)
 {
-	m_pos.sxyz(x, y, 0.0d);
-	m_size.sxyz(w, h, 0.0d);
+	m_pos.sxyz(x, y, 0.0);
+	m_size.sxyz(w, h, 0.0);
 }
 
 Platform::~Platform()
@@ -43,17 +43,17 @@ void Platform::display()
 
 void Platform::setpos(double x, double y)
 {
-	m_pos.sxyz(x, y, 0.0d);
+	m_pos.sxyz(x, y, 0.0);
 }
 
 void Platform::setsize(double w, double h)
 {
-	m_size.sxyz(w, h, 0.0d);
+	m_size.sxyz(w, h, 0.0);
 }
 
 const vector3d& Platform::pos()
 {
-	return m_pos; 
+	return m_pos;
 }
 
 const vector3d& Platform::size()

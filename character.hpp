@@ -4,6 +4,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "platform.hpp"
+
 
 class Character
 {
@@ -12,11 +14,15 @@ class Character
 		Character( void* superclass, sf::RenderWindow* window);
 		~Character();
         void update(double new_time);
-        int getOffset();
+        int offset();
         void display();
 		const void* const thesuper;
-		int collision(Platform* platform);
+		int collision(Platform platform);
 		void sx( int x );
+		const vector3d& pos()
+		{
+		    return m_pos;
+		}
 
 	private:
 		vector3d m_pos;
