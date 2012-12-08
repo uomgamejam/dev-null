@@ -7,9 +7,12 @@
 
 class super{
 	
-	public:
-		super();
-		~super();
+	//public:
+		public super();
+		public ~super();
+		
+		void update();
+		void 
 		
 		void update(){
 		  movePlayer();
@@ -21,8 +24,12 @@ class super{
 		
 	protected:
 	
+	
 	private:
 		std::list<platform> platforms;
+<<<<<<< HEAD
+		character player;
+=======
 		character player = new character(); 
 		
 		void display(){
@@ -52,6 +59,7 @@ class super{
 	        
 	        	
 	
+>>>>>>> 5c0dd5f63a39f02b9eb09571fdfc8b7f802c267f
 };
 
 #endif
