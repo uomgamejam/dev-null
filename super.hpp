@@ -1,19 +1,22 @@
 
 
+#include <list>
 
+#ifndef __SUPER__HPP__
+#define __SUPER__HPP__
 
-void createNewPlatform(list& platforms)
-{
-	platforms.push_back(new_platfrom);
-	thesuperclass.createNewPlatform();
-	n_platforms ++;
+class super{
+	
+	public:
+		super();
+		~super();
+		
+	protected:
+	
+	private:
+		std::list<platform> platforms;
+		
+	
+};
 
-}
-
-
-
-main(){
-
-	game.update();
-
-}
+#endif
