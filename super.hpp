@@ -1,6 +1,7 @@
 
 
 #include <list>
+#include "platform.hpp"
 
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
@@ -52,7 +53,8 @@ class super{
 	        }
 	        
 	        void moveAll(){
-	          //TODO
+	          for (i = 0; i < platforms.size(); i ++)
+	            platforms.at(i).sx(platforms.at(i).x() - player.vel.x());
 	        }
 };
 
