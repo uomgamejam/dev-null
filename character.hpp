@@ -9,7 +9,6 @@ class character{
 		~character();
 	
 		const void* const thesuper;
-		thesuper = 0;
 		
 	
 	private:

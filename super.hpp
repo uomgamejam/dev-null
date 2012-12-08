@@ -7,16 +7,19 @@
 
 class super{
 	
-	public:
-		super();
-		~super();
+	//public:
+		public super();
+		public ~super();
+		
+		void update();
+		void 
 		
 	protected:
 	
+	
 	private:
 		std::list<platform> platforms;
-		
-	
+		character player;
 };
 
 #endif
