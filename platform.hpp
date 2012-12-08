@@ -11,15 +11,21 @@ class Platform
 
 	public:
 		Platform(sf::RenderWindow);
-		Platform(double, double, double, double, double, double);
+		Platform(double, double, double, double);
 		~Platform();
 		
 		void update();
 		void display();
 		
+		
+		// Set
 		void setpos(double, double);
 		void setsize(double, double);
-		void setvel(double, double);
+		
+		// Get
+		const vector3d& pos();
+		const vector3d& size();
+		
 	
 	protected:
 	
@@ -27,7 +33,6 @@ class Platform
 	private:
 		vector3d m_pos;
 		vector3d m_size;
-		vector3d m_vel;
 		
 		sf::Image platformimage;
 		sf::Sprite platformsprite;

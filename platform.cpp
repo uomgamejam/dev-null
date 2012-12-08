@@ -1,5 +1,5 @@
 
-#include "platform"
+#include "platform.hpp"
 
 Platform::platform(sf::RenderWindow* thewindow)
 {
@@ -19,11 +19,10 @@ Platform::platform(sf::RenderWindow* thewindow)
 	m_vel.reset();
 }
 
-Platform::platform(double x, double y, double w, double h, double vx, double vy);
+Platform::platform(double x, double y, double w, double h);
 {
 	m_pos.sxyz(x, y, 0.0d);
 	m_size.sxyz(w, h, 0.0d);
-	m_vel.sxyz(vx, vy, 0.0d);
 }
 
 Platform::~platform()
@@ -53,7 +52,12 @@ void Platform::setsize(double w, double h)
 	m_size.sxyz(w, h, 0.0d);
 }
 
-void Platform::setvel(double vx, double vy)
+const vector3d& Platform::pos()
 {
-	m_vel.sxyz(vx, vy, 0.0d);
+	return m_pos; 
+}
+
+const vector3d& Platform::size()
+{
+	return m_size;
 }
