@@ -1,21 +1,31 @@
-
 #ifndef __CHARACTER__HPP__
 #define __CHARACTER__HPP__
 
-class character{
+#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
+
+#include "super.hpp"
+
+class Character{
 
 	public:
-		character(super* superclass) : thesuper(superclass);
-		~character();
-	
+		Character(Super* superclass, sf::RenderWindow* window);
+		~Character();
+        void update(double new_time);
+        int getOffset();
+        void display();
 		const void* const thesuper;
-		
-	
+		Direction collision(Platform* platform);
+
 	private:
 		vector3d m_pos;
 		vector3d m_vel;
 		vector3d m_acc;
-		double m_time_step;
+		double m_last_time;
+		sf::RenderWindow* m_window;
+		sf::Image m_image_running;
+		sf::Sprite m_sprite_running;
+		int m_offset;
 };
 
 #endif
