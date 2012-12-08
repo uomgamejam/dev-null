@@ -27,7 +27,7 @@ void Super::display()
 
 void Super::createPlatforms()
 {
-  std::list<platform>::iterator iter;
+  std::list<Platform>::iterator iter;
   if (platforms.back.x() + platforms.back().w() + 300 < 1200)
   {
     platform newPlatform();
@@ -37,7 +37,7 @@ void Super::createPlatforms()
 
 void Super::removePlatforms()
 {
-  std::list<platform>::iterator iter;
+  std::list<Platform>::iterator iter;
   for (i = 0; i < platforms.size(); i ++)
   {
     iter ++;
@@ -53,7 +53,7 @@ void Super::movePlayer()
 
 void Super::moveAll()
 {
-  std::list<platform>::iterator iter;
+  std::list<Platform>::iterator iter;
   for (i = 0; i < platforms.size(); i ++)
   {
     iter ++;
