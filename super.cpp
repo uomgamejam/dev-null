@@ -35,7 +35,7 @@ void Super::display()
 void Super::createPlatforms()
 {
   std::list<Platform>::iterator iter = platforms.begin();
-  if (platforms.back().pos().x() + platforms.back().size().y() + 300 < 1200)
+  if (platforms.back().pos().x() + platforms.back().size().x() + 300 < 2400)
   {
     Platform newPlatform = Platform(m_window);
     platforms.push_back(newPlatform);

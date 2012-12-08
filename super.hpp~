@@ -22,7 +22,7 @@ class Super{
 		std::list<Platform> platforms;
 		Character player();
 		int i;
-		
+
 
 		void display();
 
