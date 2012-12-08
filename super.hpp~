@@ -13,13 +13,7 @@ class super{
 		super();
 		~super();
 		
-		void update(){
-		  movePlayer();
-		  moveAll();
-		  createPlatforms();
-		  removePlatforms();
-		  display();
-		}
+		void update();
 		
 	protected:
 	
