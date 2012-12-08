@@ -18,7 +18,9 @@ int main()
 
         window.SetFramerateLimit(0);
 
-
+	while(1){
+		std::cout << "hi" << std::endl;
+	}	
     }
     else
     {
