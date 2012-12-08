@@ -19,7 +19,7 @@ class Super{
 	
 	
 	private:
-		std::list<platform> platforms;
+		std::list<Platform> platforms;
 		character player(); 
 		
 		void display();
@@ -34,7 +34,7 @@ class Super{
 	        
 	        int numP();
 	        
-	        platform getP(int index);
+	        Platform getP(int index);
 };
 
 #endif
