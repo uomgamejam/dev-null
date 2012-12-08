@@ -5,6 +5,7 @@ Super::Super(sf::RenderWindow* window): player(this, window), clock()
 {
     m_window = window;
     clock.Reset();
+    platforms.push_back(Platform(m_window));
 }
 
 Super::~Super()
@@ -23,21 +24,19 @@ void Super::update()
 
 void Super::display()
 {
-    /*
   std::list<Platform>::iterator iter = platforms.begin();
   for (i = 0; i < platforms.size(); i ++)
   {
     iter->display();
     iter++;
   }
-  */
-  player.display();
+  
+  //player.display();
 }
 
 void Super::createPlatforms()
 {
-  std::list<Platform>::iterator iter = platforms.begin();
-  if (platforms.back().pos().x() + platforms.back().size().x() + 300 < 2400)
+  if (platforms.back().pos().x() + platforms.back().size().y() + 300 < 1200)
   {
     Platform newPlatform = Platform(m_window);
     platforms.push_back(newPlatform);
@@ -47,12 +46,8 @@ void Super::createPlatforms()
 void Super::removePlatforms()
 {
   std::list<Platform>::iterator iter = platforms.begin();
-  for (i = 0; i < platforms.size() - 1; i ++)
-  {
-    if (iter->pos().x() + iter->size().x() < 0)
-      platforms.erase(iter);
-    iter ++;
-  }
+  if (platforms.front().pos().x() + platforms.front().size().x() < 0)
+    platforms.erase(iter);
 }
 
 void Super::movePlayer()
@@ -65,8 +60,8 @@ void Super::moveAll()
   std::list<Platform>::iterator iter = platforms.begin();
   for (i = 0; i < platforms.size(); i ++)
   {
-    iter ++;
     iter->setpos(iter->pos().x() - player.offset(), iter->pos().y());
+    iter ++;
   }
 
   player.sx(player.pos().x() - player.offset());
