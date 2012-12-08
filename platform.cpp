@@ -8,6 +8,7 @@ Platform::Platform(sf::RenderWindow* thewindow)
 	if (!platformimage.LoadFromFile("resource/sprites/platform1.png"))
 	{
 		// Error...
+		std::cout<< " error" << std::endl;
 	}
 	else
 	{

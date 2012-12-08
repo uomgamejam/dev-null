@@ -26,8 +26,8 @@ void Super::display()
   std::list<Platform>::iterator iter = platforms.begin();
   for (i = 0; i < platforms.size(); i ++)
   {
-    iter ++;
     iter->display();
+    iter++;
   }
   player.display();
 }
@@ -45,11 +45,14 @@ void Super::createPlatforms()
 void Super::removePlatforms()
 {
   std::list<Platform>::iterator iter = platforms.begin();
-  for (i = 0; i < platforms.size(); i ++)
+  for (i = 0; i < platforms.size() - 1; i ++)
   {
-    iter ++;
-    if (iter->pos().x() + iter->size().y() < 0)
+      std::cout << i << std::endl;
+      std::cout << platforms.size() << std::endl;
+
+    if (iter->pos().x() + iter->size().x() < 0)
       platforms.erase(iter);
+    iter ++;
   }
 }
 

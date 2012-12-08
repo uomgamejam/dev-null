@@ -6,7 +6,7 @@
 #include "super.hpp"
 
 const unsigned int FRAMES_PER_SEC = 40;
-static unsigned long long framecounter = 0;
+static unsigned long framecounter = 0;
 
 int main()
 {
@@ -28,7 +28,7 @@ int main()
 			std::cout << framecounter ++ << std::endl;
 			super.update();
 			super.display();
-		}	
+		}
     }
     else
     {
