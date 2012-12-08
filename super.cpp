@@ -15,10 +15,11 @@ void Super::update()
 }
 
 void Super::display()
-{
+{  
+  std::list<platform>::iterator iter;
   for (i = 0; i < platforms.size(); i ++)
   {
-    iter = std::next(platforms.begin(), i);
+    iter ++;
     iter->display();
   }
   player.display();
@@ -26,6 +27,7 @@ void Super::display()
 
 void Super::createPlatforms()
 {
+  std::list<platform>::iterator iter;
   if (platforms.back.x() + platforms.back().w() + 300 < 1200)
   {
     platform newPlatform();
@@ -35,9 +37,10 @@ void Super::createPlatforms()
 
 void Super::removePlatforms()
 {
+  std::list<platform>::iterator iter;
   for (i = 0; i < platforms.size(); i ++)
   {
-    iter = std::next(platforms.begin(), i);
+    iter ++;
     if (iter->x() + iter->.w() < 0)
       platforms.erase(i);
   }
@@ -53,7 +56,7 @@ void Super::moveAll()
   std::list<platform>::iterator iter;
   for (i = 0; i < platforms.size(); i ++)
   {
-    iter = std::next(platforms.begin(), i);
+    iter ++;
     iter->sx(iter->x() - player.vel().x());
   }
 
