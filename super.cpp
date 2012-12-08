@@ -1,11 +1,11 @@
-#include "super.hpp"
+#include "Super.hpp"
 
-super::super()
+Super::Super()
 {
 	
 }
 
-void super::update()
+void Super::update()
 {
   movePlayer();
   moveAll();
@@ -14,14 +14,14 @@ void super::update()
   display();
 }
 
-void super::display()
+void Super::display()
 {
   for (i = 0; i < platforms.size(); i ++)
     platforms.at(i).display();
   player.display();
 }
 
-void super::createPlatforms()
+void Super::createPlatforms()
 {
   if (platforms.back.gx() + platforms.back.gl() + 300 < 1200)
   {
@@ -30,7 +30,7 @@ void super::createPlatforms()
   }
 }
 
-void super::removePlatforms()
+void Super::removePlatforms()
 {
   for (i = 0; i < platforms.size(); i ++)
   {
@@ -39,15 +39,25 @@ void super::removePlatforms()
   }
 }
 
-void super::movePlayer()
+void Super::movePlayer()
 {
   player.update();
 }
 
-void super::moveAll()
+void Super::moveAll()
 {
   for (i = 0; i < platforms.size(); i ++)
     platforms.at(i).sx(platforms.at(i).x() - player.vel().x();
     
   player.sx(player.x() - player.vel().x());
+}
+
+int Super::numP()
+{
+  return platforms.size();
+}
+
+platform Super::getP(int index)
+{
+  return platforms.at(index);
 }

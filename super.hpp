@@ -2,16 +2,16 @@
 
 #include <list>
 #include "platform.hpp"
-#include "Character.hpp"
+#include "character.hpp"
 
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
 
-class super{
+class Super{
 	
 	public:
-		super();
-		~super();
+		Super();
+		~Super();
 		
 		void update();
 		
@@ -31,6 +31,10 @@ class super{
 	        void movePlayer();
 	        
 	        void moveAll();
+	        
+	        int numP();
+	        
+	        platform getP(int index);
 };
 
 #endif

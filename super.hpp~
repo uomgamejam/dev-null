@@ -7,11 +7,11 @@
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
 
-class super{
+class Super{
 	
 	public:
-		super();
-		~super();
+		Super();
+		~Super();
 		
 		void update();
 		
