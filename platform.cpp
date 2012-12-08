@@ -1,7 +1,7 @@
 
 #include "platform.hpp"
 
-Platform::platform(sf::RenderWindow* thewindow)
+Platform::Platform(sf::RenderWindow* thewindow)
 {
 	window = thewindow;
 	
@@ -19,13 +19,13 @@ Platform::platform(sf::RenderWindow* thewindow)
 	m_vel.reset();
 }
 
-Platform::platform(double x, double y, double w, double h);
+Platform::Platform(double x, double y, double w, double h)
 {
 	m_pos.sxyz(x, y, 0.0d);
 	m_size.sxyz(w, h, 0.0d);
 }
 
-Platform::~platform()
+Platform::~Platform()
 {
 	// Nothing to free
 }
@@ -39,7 +39,7 @@ void Platform::display()
 {
 	//TODO:
 	platformsprite.resize(size.x(), size.y());
-	window->draw(platformsprite)
+	window->display(platformsprite);
 }
 
 void Platform::setpos(double x, double y)
