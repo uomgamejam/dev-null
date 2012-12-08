@@ -11,6 +11,7 @@ Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(supe
         std::cout<< "error" << std::endl;
    else
         m_sprite_running.SetImage(m_image_running);
+    frame = 0;
 }
 
 Character::~Character()

@@ -23,12 +23,14 @@ void Super::update()
 
 void Super::display()
 {
+    /*
   std::list<Platform>::iterator iter = platforms.begin();
   for (i = 0; i < platforms.size(); i ++)
   {
     iter->display();
     iter++;
   }
+  */
   player.display();
 }
 

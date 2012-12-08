@@ -32,9 +32,9 @@ class Super{
 
 		void removePlatforms();
 
-	        void movePlayer();
+        void movePlayer();
 
-	        void moveAll();
+        void moveAll();
 
         sf::Clock clock;
 };
