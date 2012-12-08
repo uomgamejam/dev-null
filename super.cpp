@@ -47,9 +47,6 @@ void Super::removePlatforms()
   std::list<Platform>::iterator iter = platforms.begin();
   for (i = 0; i < platforms.size() - 1; i ++)
   {
-      std::cout << i << std::endl;
-      std::cout << platforms.size() << std::endl;
-
     if (iter->pos().x() + iter->size().x() < 0)
       platforms.erase(iter);
     iter ++;
