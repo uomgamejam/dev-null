@@ -25,7 +25,7 @@ class super{
 	
 	private:
 		std::list<platform> platforms;
-		character player = new character(); 
+		character player(); 
 		
 		void display(){
 		  for (i = 0; i < platforms.size(); i ++)

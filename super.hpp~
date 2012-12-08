@@ -54,7 +54,7 @@ class super{
 	        
 	        void moveAll(){
 	          for (i = 0; i < platforms.size(); i ++)
-	            platforms.at(i).sx(platforms.at(i).x() - )
+	            platforms.at(i).sx(platforms.at(i).x() - player.vel.x());
 	        }
 };
 
