@@ -2,6 +2,7 @@
 
 #include <list>
 #include "platform.hpp"
+#include "character.hpp"
 
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
@@ -12,13 +13,7 @@ class super{
 		super();
 		~super();
 		
-		void update(){
-		  movePlayer();
-		  moveAll();
-		  createPlatforms();
-		  removePlatforms();
-		  display();
-		}
+		void update();
 		
 	protected:
 	
@@ -27,35 +22,15 @@ class super{
 		std::list<platform> platforms;
 		character player(); 
 		
-		void display(){
-		  for (i = 0; i < platforms.size(); i ++)
-		    platforms.at(i).display();
-		  player.display();
-		}
+		void display();
 		
-		void createPlatforms(){
-		  if (platforms.back.gx() + platforms.back.gl() + 300 < 1200){
-		    platform newPlatform = new platform();
-		    platforms.push_back(newPlatform);
-		  }
-		}
+		void createPlatforms();
 		
-		void removePlatforms(){
-		  for (i = 0; i < platforms.size(); i ++){
-		    if (platforms.at(i).x() + platforms.at(i).w() < 0){
-		      platforms.erase(i);
-		    }
-		  }
-		}
+		void removePlatforms();
 		
-	        void movePlayer(){
-	          player.move();
-	        }
+	        void movePlayer();
 	        
-	        void moveAll(){
-	          for (i = 0; i < platforms.size(); i ++)
-	            platforms.at(i).sx(platforms.at(i).x() - player.vel.x());
-	        }
+	        void moveAll();
 };
 
 #endif
