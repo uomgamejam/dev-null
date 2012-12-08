@@ -12,11 +12,8 @@ class super{
 		~super();
 		
 		void update(){
-		  movePlayer();
-		  moveAll();
-		  createPlatforms();
-		  removePlatforms();
 		  display();
+		  
 		}
 		
 	protected:
