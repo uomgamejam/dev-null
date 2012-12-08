@@ -10,11 +10,11 @@ class Platform
 {
 
 	public:
-		Platform(sf::RenderWindow);
+		Platform(sf::RenderWindow*);
 		Platform(double, double, double, double);
 		~Platform();
 		
-		void update();
+		void update(double);
 		void display();
 		
 		
