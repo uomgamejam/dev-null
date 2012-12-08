@@ -17,6 +17,8 @@ class Super{
 		int numP();
 		Platform getP(int index);
 
+		void display();
+
 	protected:
 
 
@@ -25,8 +27,6 @@ class Super{
 		Character player;
 		int i;
 		sf::RenderWindow* m_window;
-
-		void display();
 
 		void createPlatforms();
 

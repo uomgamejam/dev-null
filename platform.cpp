@@ -5,7 +5,7 @@ Platform::Platform(sf::RenderWindow* thewindow)
 {
 	window = thewindow;
 
-	if (!platformimage.LoadFromFile("./ressources/sprites/platform1.png"))
+	if (!platformimage.LoadFromFile("resource/sprites/platform1.png"))
 	{
 		// Error...
 	}

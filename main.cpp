@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "super.hpp"
+
 const unsigned int FRAMES_PER_SEC = 40;
 static unsigned long long framecounter = 0;
 
@@ -17,13 +19,16 @@ int main()
         fluxConfig >> heightW;
 
         sf::RenderWindow window(sf::VideoMode(widthW, heightW, 32), "Game");
+		Super super = Super(&window);
         window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
 
-	while(1){
-		std::cout << framecounter ++ << std::endl;
-	}	
+		while(1){
+			std::cout << framecounter ++ << std::endl;
+			super.update();
+			super.display();
+		}	
     }
     else
     {

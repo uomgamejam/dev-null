@@ -7,6 +7,11 @@ Super::Super(sf::RenderWindow* window): player(this, window), clock()
     clock.Reset();
 }
 
+Super::~Super()
+{
+	// Nothing to free
+}
+
 void Super::update()
 {
   movePlayer();
