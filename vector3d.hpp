@@ -79,7 +79,7 @@ class vector3d
             return v[0];
         }
         // Reset
-        void reset() { v[0] = v[1] = v[2] = 0.0d; }
+        void reset() { v[0] = v[1] = v[2] = 0.0; }
 
     protected:
     private:

@@ -2,7 +2,7 @@
 
 Super::Super()
 {
-	
+
 }
 
 void Super::update()
@@ -16,7 +16,7 @@ void Super::update()
 
 void Super::display()
 {
-  for (i = 0; i < platforms.size(); i ++)
+  for (int i = 0; i < platforms.size(); i ++)
     platforms.at(i).display();
   player.display();
 }
@@ -48,7 +48,7 @@ void Super::moveAll()
 {
   for (i = 0; i < platforms.size(); i ++)
     platforms.at(i).sx(platforms.at(i).x() - player.vel().x();
-    
+
   player.sx(player.x() - player.vel().x());
 }
 

@@ -3,7 +3,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-Character::Character(super* superclass, sf::RenderWindow* window) : thesuper(superclass), m_acc(0, -9.81, 0), m_vel(5, 0, 0), m_pos(5, 5, 0)
+Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(superclass), m_acc(0, -9.81, 0), m_vel(5, 0, 0), m_pos(5, 5, 0)
 {
     m_window = window;
     m_image_running.LoadFromFile("resource/sprites/run_cycle_sheet.png");
@@ -31,6 +31,11 @@ void Character::update(double new_time)
         Platform* platform = getPlatform(i);
         m_pos.sy(m_pos.y + collision(platform));
     }
+}
+
+void Character::sx( int x )
+{
+    m_pos.sx(x);
 }
 
 int Character::offset()
