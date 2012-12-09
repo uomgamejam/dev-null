@@ -43,7 +43,7 @@ Background::~Background()
 
 void Background::update(double speed)
 {
-    for( int i = 0; i < 10; i++)
+    for( i = 0; i < 10; i++)
     {
         m_pos[i].sx(m_pos[i].x() - i * speed);
         if (m_pos[i].x() + 1200 < 0)

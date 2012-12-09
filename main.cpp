@@ -1,5 +1,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -23,6 +24,11 @@ int main()
        //  window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
+       
+        sf::Music gameSong;
+        gameSong.OpenFromFile("resource/sounds/music_gameplay.wav");
+        gameSong.SetLoop(true);
+        gameSong.Play();
 
         double lastTime = 0, elapsedTime = 0;
 		while(1){

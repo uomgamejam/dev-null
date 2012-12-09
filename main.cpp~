@@ -1,5 +1,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -17,23 +18,48 @@ int main()
 
         fluxConfig >> widthW;
         fluxConfig >> heightW;
-        
-        std::cout << sf::System::GetMaximumSize();
 
         sf::RenderWindow window(sf::VideoMode(widthW, heightW, 32), "Game");
 		Super super = Super(&window);
-        window.UseVerticalSync(true);
+       //  window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
+       
+        sf::Music gameSong;
+        gameSong.OpenFromFile("music_gameplay.wav");
+        gameSong.SetLoop(true);
+        gameSong.Play();
 
+        double lastTime = 0, elapsedTime = 0;
 		while(1){
-			// std::cout << framecounter ++ << std::endl;
+            sf::Event Event;
+            while (window.GetEvent(Event))
+            {
+                if (Event.Type == sf::Event::Closed)
+                {
+                    window.Close();
+                    break;
+                }
+                if( Event.Type == sf::Event::KeyPressed)
+                {
+                    if (Event.Key.Code == sf::Key::Escape)
+                    {
+                        window.Close();
+                        break;
+                    }
+                    else if ( Event.Key.Code == sf::Key::Up )
+                    {
+                        super.addVel(0, -1750);
+                    }
+                }
+            }
 			super.update();
-			window.Clear();
-			sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
-			window.Draw(rect);
-			super.display();
-			window.Display();
+            window.Clear();
+            sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
+            window.Draw(rect);
+            super.display();
+            window.Display();
+
 		}
     }
     else
