@@ -23,7 +23,7 @@ class Super{
 
 
 	private:
-		std::list<Platform> platforms;
+		std::list<Platform*> platforms;
 		Character player;
 		int i;
 		sf::RenderWindow* m_window;

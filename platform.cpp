@@ -16,7 +16,7 @@ Platform::Platform(sf::RenderWindow* thewindow)
 	}
 
 	m_pos.reset();
-	m_size.sxyz(100.0, 100.0, 0.0);
+	m_size.sxyz(200.0, 31, 0.0);
 }
 
 Platform::Platform(double x, double y, double w, double h)
@@ -37,8 +37,10 @@ void Platform::update(double timestep)
 
 void Platform::display()
 {
-	//TODO:
-	platformsprite.Resize(m_size.x(), m_size.y());
+	// platformsprite.Resize(m_size.x(), m_size.y());
+	std::cout<< m_pos.x() << m_pos.y() << std::endl;
+    platformsprite.SetX(m_pos.x());
+    platformsprite.SetY(m_pos.y());
 	window->Draw(platformsprite);
 }
 
