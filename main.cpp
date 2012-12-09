@@ -37,7 +37,7 @@ int main()
 
         double lastTime = 0, elapsedTime = 0;
 
-		while(1){
+		while(window.IsOpened()){
             sf::Event Event;
             while (window.GetEvent(Event))
             {
