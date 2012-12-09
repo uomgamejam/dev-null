@@ -39,6 +39,7 @@ class Super{
 		sf::Font textFont;
 		
 		double score;
+		int tokens;
 
 	protected:
 

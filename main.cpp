@@ -30,7 +30,6 @@ int main()
        //  window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
-		Super super(&window);
 
         sf::Music gameSong;
         sf::Music jumpSound;
@@ -47,6 +46,7 @@ int main()
 
             if( keep)
             {
+				    Super super(&window);
                     while(play){
                         sf::Event Event;
                         while (window.GetEvent(Event))
@@ -54,6 +54,7 @@ int main()
                             if (Event.Type == sf::Event::Closed)
                             {
                                 window.Close();
+                                play = false;
                                 keep = false;
                                 break;
                             }
@@ -62,7 +63,8 @@ int main()
                                 if (Event.Key.Code == sf::Key::Escape)
                                 {
                                     window.Close();
-                                    keep = false;
+									play = false;
+									keep = false;
                                     break;
                                 }
                                 else if ( Event.Key.Code == sf::Key::Up )
@@ -77,11 +79,26 @@ int main()
 
                             }
                         }
+                        
+                  
                         super.update();
-                        window.Clear();
+                        window.Clear();     
+                        
+                        
                         sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
                         window.Draw(rect);
                         super.display();
+                        std::stringstream converter;
+						converter << "  Time: ";
+						converter << (unsigned long)super.score;
+						std::string scoretext = converter.str();
+						printText(20, 20, scoretext, 16, &window, &super);
+                        std::stringstream converter2;
+						converter2 << "Tokens: ";
+						converter2 << (unsigned long)super.tokens;
+						scoretext = converter2.str();
+						printText(20, 60, scoretext, 16, &window, &super);
+
                         window.Display();
                         if ( super.stop == true )
                             play = false;
@@ -94,23 +111,8 @@ int main()
                     keep = gameOver.update();
                 }
             }
-			super.update();
-            window.Clear();
             
-            sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
-            window.Draw(rect);
-            
-            
-            super.display();
-            
-            std::stringstream converter;
-            //converter.flush();
-            converter << super.score;
-            std::string scoretext = converter.str();
-            printText(100, 100, scoretext, 10, &window, &super);
-            printText(200,200,"text",100,&window,&super);
-            
-            window.Display();
+
         }
     }
     else
@@ -125,11 +127,10 @@ void printText(int x, int y, std::string content, int size, sf::RenderWindow* wi
 	
 	sf::String text(content, super->textFont, size);
 	
-	text.SetColor(sf::Color(0, 255, 0));
-	text.SetRotation(90.0f);
+	text.SetColor(sf::Color(0, 0, 0));
+	text.SetRotation(0.0f);
 	text.SetScale(2.0f, 2.0f);
 	text.Move(x, y);
-	text.SetText("HI");
 	
 	window->Draw(text);
 }

@@ -30,6 +30,8 @@ class Character
 		    return m_pos;
 		}
 		bool onPlatform();
+		double score(){ return scoreTime; }
+		int tokens(){ return nbTokens; }
 
 	private:
 		vector3d m_pos;
