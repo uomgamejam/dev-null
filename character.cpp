@@ -4,6 +4,7 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 
 Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(superclass)
@@ -35,6 +36,8 @@ Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(supe
     scoreTime = 0;
     nbShurikan = 2;
     m_last_time = 0;
+    
+    pickupSound.OpenFromFile("resource/sounds/pickup_collect.wav");
 }
 
 Character::~Character()
@@ -113,6 +116,7 @@ void Character::update(double new_time)
         Upgrade upgrade_temp = ((Super*)thesuper)->getU(i);
         if( simpleCollision(upgrade_temp))
         {
+            pickupSound.Play();
             nbTokens++;
             if( upgrade_temp.getUpgradeFlags() == UT_CLOTHING)
             {

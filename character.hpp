@@ -3,6 +3,7 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "platform.hpp"
 #include "upgrade.hpp"
@@ -44,6 +45,7 @@ class Character
 		sf::Sprite m_sprite_running;
 		sf::Image m_image_upgrades[3];
 		sf::Sprite m_sprite_upgrade[3];
+		sf::Music pickupSound;
 		bool upgrade[3];
 		double m_offset;
 		double m_frame, m_last_frame_time, m_frame_time;
