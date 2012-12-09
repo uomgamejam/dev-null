@@ -35,10 +35,10 @@ void Super::display()
 
 void Super::createPlatforms()
 {
-  if (platforms.back()->pos().x() + platforms.back()->size().y() + 300 < 1200)
+  if (platforms.back()->pos().x() + platforms.back()->size().y() + 50 < 600)
   {
     platforms.push_back(new Platform(m_window));
-    platforms.back()->setpos(100, 100);
+    platforms.back()->setpos(1200, 100);
   }
 }
 
