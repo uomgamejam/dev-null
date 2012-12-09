@@ -19,10 +19,12 @@ class Character
 		const void* const thesuper;
 		int collision(Platform platform);
 		void sx( int x );
+		void addAcc( double x, double y);
 		const vector3d& pos()
 		{
 		    return m_pos;
 		}
+		bool onPlatform();
 
 	private:
 		vector3d m_pos;
@@ -33,8 +35,9 @@ class Character
 		sf::RenderWindow* m_window;
 		sf::Image m_image_running;
 		sf::Sprite m_sprite_running;
-		int m_offset;
-		int frame;
+		double m_offset;
+		double m_frame, m_last_frame_time, m_frame_time;
+		double x,y,z;
 };
 
 #endif
