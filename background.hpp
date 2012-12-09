@@ -16,14 +16,14 @@ class Background
 
 		void update(double speed);
 		void display();
-
 		void setpos(double, double);
+		void addLayer();
 
 
 	protected:
 
 	private:
-		int i;
+		int i, maxLayer;
 		vector3d m_pos[10];
 		sf::Image backgroundimage[10];
 		sf::Sprite backgroundsprite[20];

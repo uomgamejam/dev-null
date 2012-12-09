@@ -37,11 +37,13 @@ class Super{
 
 		void shiftBackground();
 
-        void movePlayer(double time);
+        	void movePlayer(double time);
 
-        void moveAll(double time);
+        	void moveAll(double time);
 
-        sf::Clock clock;
+        	void addBackground();
+        	
+        	sf::Clock clock;
 };
 
 #endif

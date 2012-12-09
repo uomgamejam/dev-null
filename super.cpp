@@ -90,3 +90,8 @@ void Super::addVel( double x, double y)
 {
     player.addVel(x,y);
 }
+
+void Super::addBackground()
+{
+    background.addLayer();
+}

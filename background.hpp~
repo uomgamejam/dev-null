@@ -16,8 +16,8 @@ class Background
 
 		void update(double speed);
 		void display();
-
 		void setpos(double, double);
+		void addLayer();
 
 
 	protected:
