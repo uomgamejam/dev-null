@@ -44,7 +44,6 @@ int main()
                 if (Event.Type == sf::Event::Closed)
                 {
                     window.Close();
-                    return 0;
                     break;
                 }
                 if( Event.Type == sf::Event::KeyPressed)
@@ -52,7 +51,6 @@ int main()
                     if (Event.Key.Code == sf::Key::Escape)
                     {
                         window.Close();
-						return 0;
                         break;
                     }
                     else if ( Event.Key.Code == sf::Key::Up )
@@ -67,7 +65,7 @@ int main()
             window.Clear();
             
             std::stringstream converter;
-            converter.flush();
+            //converter.flush();
             converter << super.score;
             std::string scoretext = converter.str();
             printText(100, 100, scoretext, 10, &window, &super);
