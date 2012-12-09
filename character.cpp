@@ -1,5 +1,6 @@
 #include "character.hpp"
 #include "super.hpp"
+#include "upgrade.hpp"
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
@@ -11,10 +12,21 @@ Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(supe
     m_pos = vector3d(5, 5, 0);
     m_size = vector3d(200.0, 186.0, 0.0);
     m_window = window;
-    if( !m_image_running.LoadFromFile("resource/sprites/run_cycle_sheet.png") )
+    if( !m_image_running.LoadFromFile("resource/sprites/run_cycle_sheet.png")
+        || !m_image_upgrades[0].LoadFromFile("resource/sprites/bandanna_cycle_sheet.png")
+        || !m_image_upgrades[1].LoadFromFile("resource/sprites/cape_cycle_sheet.png")
+        || !m_image_upgrades[2].LoadFromFile("resource/sprites/shuriken_cycle_sheet.png"))
         std::cout<< "error" << std::endl;
    else
+   {
         m_sprite_running.SetImage(m_image_running);
+        m_sprite_upgrade[0].SetImage(m_image_upgrades[0]);
+        m_sprite_upgrade[1].SetImage(m_image_upgrades[1]);
+        m_sprite_upgrade[2].SetImage(m_image_upgrades[2]);
+   }
+    upgrade[0] = false;
+    upgrade[1] = false;
+    upgrade[2] = false;
     m_frame = 0;
     m_last_frame_time = 0;
     m_frame_time = 0.01;
@@ -32,6 +44,17 @@ void Character::display()
     m_sprite_running.SetSubRect(sf::IntRect(m_frame * 250, 0, m_frame*250+250, 186));
     m_sprite_running.SetScale(0.5,0.5);
     m_window->Draw(m_sprite_running);
+    for( int i = 0; i < 3; i++ )
+    {
+        if(upgrade[i])
+        {
+            m_sprite_upgrade[i].SetX(m_pos.x());
+            m_sprite_upgrade[i].SetY(m_pos.y());
+            m_sprite_upgrade[i].SetSubRect(sf::IntRect(m_frame * 250, 0, m_frame*250+250, 186));
+            m_sprite_upgrade[i].SetScale(0.5,0.5);
+            m_window->Draw( m_sprite_upgrade[i]);
+        }
+    }
 }
 
 void Character::addVel( double x, double y)
@@ -80,6 +103,28 @@ void Character::update(double new_time)
             m_frame = 13;
     }
     m_last_time = new_time;
+    for( int i = 0; i < ((Super*)thesuper)->numU(); i ++)
+    {
+        Upgrade upgrade_temp = ((Super*)thesuper)->getU(i);
+        if( simpleCollision(upgrade_temp))
+        {
+            std::cout<<"ok1     " << upgrade_temp.getUpgradeFlags() << std::endl;
+            if( upgrade_temp.getUpgradeFlags() == UT_CLOTHING)
+            {
+                std::cout<<"ok2" << std::endl;
+                upgrade[rand()%3] = true;
+            }
+            else if ( upgrade_temp.getUpgradeFlags() == UT_IDEA)
+            {
+                std::cout<<"ok2" << std::endl;
+            }
+            else if( upgrade_temp.getUpgradeFlags() == UT_WEAPON)
+            {
+                std::cout<<"ok2" << std::endl;
+            }
+            ((Super*)thesuper)->deleteU(i);
+        }
+    }
 }
 
 void Character::sx( int x )
@@ -99,7 +144,7 @@ bool Character::onPlatform()
 
 int Character::collision(Platform platform, double offsety)
 {
-    std::cout<< offsety << std::endl;
+    // std::cout<< offsety << std::endl;
     if(  m_pos.x() + m_size.x() / 2 - 25 < platform.pos().x()
        || m_pos.y() + 186 / 2 < platform.pos().y()
        || m_pos.x() + 38 > platform.pos().x() / 2 + platform.size().x()
@@ -110,12 +155,27 @@ int Character::collision(Platform platform, double offsety)
     }
     else if ( m_vel.y() > -1 )
     {
-        std::cout<< "ERROR" <<  platform.pos().y() - m_pos.y() << std::endl;
+        // std::cout<< "ERROR" <<  platform.pos().y() - m_pos.y() << std::endl;
         return ( m_pos.y() + m_size.y() / 2 ) - platform.pos().y();
     }
     else
     {
         return -1;
     }
+}
+
+bool Character::simpleCollision(Upgrade upgrade)
+{
+        if(  m_pos.x() + m_size.x() / 2  < upgrade.pos().x()
+       || m_pos.y() + m_size.y() / 2 < upgrade.pos().y()
+       || m_pos.x()  > upgrade.pos().x() / 2 + upgrade.size().x()
+       || m_pos.y()  > upgrade.pos().y() + upgrade.size().y()  )
+       {
+           return false;
+       }
+       else
+       {
+           return true;
+       }
 }
 

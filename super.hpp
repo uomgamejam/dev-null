@@ -4,6 +4,8 @@
 #include "platform.hpp"
 #include "character.hpp"
 #include "background.hpp"
+#include "upgrade.hpp"
+#include <vector>
 
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
@@ -17,6 +19,9 @@ class Super{
 		void update();
 		int numP();
 		Platform getP(int index);
+		int numU();
+		Upgrade getU(int index);
+		void deleteU(int index);
 		void addVel( double x, double y);
 		void display();
 
@@ -25,6 +30,7 @@ class Super{
 
 	private:
 		std::list<Platform*> platforms;
+		std::vector<Upgrade*> upgrades;
 		Character player;
 		Background background;
 		int i;
@@ -37,13 +43,11 @@ class Super{
 
 		void shiftBackground();
 
-        	void movePlayer(double time);
+        void movePlayer(double time);
 
-        	void moveAll(double time);
+        void moveAll(double time);
 
-        	void addBackground();
-        	
-        	sf::Clock clock;
+        sf::Clock clock;
 };
 
 #endif

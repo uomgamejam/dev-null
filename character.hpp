@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "platform.hpp"
+#include "upgrade.hpp"
 
 
 class Character
@@ -20,6 +21,7 @@ class Character
 		int collision(Platform platform, double offsety);
 		void sx( int x );
 		void addVel( double x, double y);
+		bool simpleCollision(Upgrade upgrade);
 		const vector3d& pos()
 		{
 		    return m_pos;
@@ -35,6 +37,9 @@ class Character
 		sf::RenderWindow* m_window;
 		sf::Image m_image_running;
 		sf::Sprite m_sprite_running;
+		sf::Image m_image_upgrades[3];
+		sf::Sprite m_sprite_upgrade[3];
+		bool upgrade[3];
 		double m_offset;
 		double m_frame, m_last_frame_time, m_frame_time;
 		double x,y,z;
