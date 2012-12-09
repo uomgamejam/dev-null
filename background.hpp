@@ -26,9 +26,9 @@ class Background
 
 	private:
 		int i, maxLayer;
-		vector3d m_pos[10];
-		sf::Image backgroundimage[10];
-		sf::Sprite backgroundsprite[20];
+		vector3d m_pos[11];
+		sf::Image backgroundimage[11];
+		sf::Sprite backgroundsprite[22];
 		sf::RenderWindow* window;
 
 };

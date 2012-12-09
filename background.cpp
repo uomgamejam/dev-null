@@ -10,24 +10,25 @@ Background::Background(sf::RenderWindow* thewindow)
 	    || !backgroundimage[2].LoadFromFile("resource/sprites/background_assets/background_cloudlayer_middle.png")
 	    || !backgroundimage[3].LoadFromFile("resource/sprites/background_assets/background_mountains_middle.png")
 	    || !backgroundimage[4].LoadFromFile("resource/sprites/background_assets/background_cloudlayer_fore.png")
-	    || !backgroundimage[5].LoadFromFile("resource/sprites/background_assets/background_mountains_fore.png")
-	    || !backgroundimage[6].LoadFromFile("resource/sprites/background_assets/background_cloud1_top.png")
-	    || !backgroundimage[7].LoadFromFile("resource/sprites/background_assets/background_cloud2_top.png")
-	    || !backgroundimage[8].LoadFromFile("resource/sprites/background_assets/background_cloud3_top.png")
-	    || !backgroundimage[9].LoadFromFile("resource/sprites/background_assets/background_grass_bottom.png"))
+        || !backgroundimage[5].LoadFromFile("resource/sprites/background_assets/background_cloudlayer_fore.png")
+	    || !backgroundimage[6].LoadFromFile("resource/sprites/background_assets/background_mountains_fore.png")
+	    || !backgroundimage[7].LoadFromFile("resource/sprites/background_assets/background_cloud1_top.png")
+	    || !backgroundimage[8].LoadFromFile("resource/sprites/background_assets/background_cloud2_top.png")
+	    || !backgroundimage[9].LoadFromFile("resource/sprites/background_assets/background_cloud3_top.png")
+	    || !backgroundimage[10].LoadFromFile("resource/sprites/background_assets/background_grass_bottom.png"))
 	{
 		// Error...
 		std::cout<< " error" << std::endl;
 	}
 	else
 	{
-	  for (i = 0; i < 10; i ++)
+	  for (i = 0; i < 11; i ++)
 	  {
 	    backgroundsprite[i].SetImage(backgroundimage[i]);
-	    backgroundsprite[i+10].SetImage(backgroundimage[i]);
+	    backgroundsprite[i+11].SetImage(backgroundimage[i]);
 	  }
 	}
-    for (i = 0; i < 10; i ++)
+    for (i = 0; i < 11; i ++)
         m_pos[i].reset();
 }
 
@@ -62,32 +63,37 @@ void Background::update(double speed)
 
 	for (i = 0; i < maxLayer; i ++)
           backgroundsprite[i].SetPosition(m_pos[i].x(), m_pos[i].y());
-    for (i = 10; i < maxLayer+10; i ++)
-          backgroundsprite[i].SetPosition(m_pos[i-10].x() + 1200, m_pos[i-10].y());
+    for (i = 11; i < maxLayer+11; i ++)
+          backgroundsprite[i].SetPosition(m_pos[i-11].x() + 1200, m_pos[i-11].y());
 }
 
 void Background::display()
 {
 	for (i = 0; i < maxLayer; i ++)
 	{
-	  window->Draw(backgroundsprite[i]);
-	  window->Draw(backgroundsprite[i+10]);
+	    if( i!= 4 )
+	    {
+            window->Draw(backgroundsprite[i]);
+            window->Draw(backgroundsprite[i+11]);
+	    }
 	}
-	 window->Draw(backgroundsprite[9]);
-     window->Draw(backgroundsprite[19]);
+	 window->Draw(backgroundsprite[10]);
+     window->Draw(backgroundsprite[21]);
 }
 
 void Background::setpos(double xIn, double yIn)
 {
-    for (i = 0; i < 10; i ++)
+    for (i = 0; i < 11; i ++)
         m_pos[i].sxyz(xIn, yIn, 0.0);
 }
 
 void Background::addLayer()
 {
-    if(maxLayer < 9 )
+    if(maxLayer < 10 )
     {
         maxLayer += 1;
+        if( maxLayer == 4)
+            maxLayer += 1;
     	m_pos[maxLayer-1].sy(600);
     }
 }
