@@ -197,6 +197,7 @@ int Super::numW()
   return walls.size();
 }
 
+
 Platform Super::getP(int index)
 {
   std::list<Platform*>::iterator iter = platforms.begin();
@@ -224,9 +225,9 @@ void Super::deleteU(int index)
     upgrades.pop_back();
 }
 
-void Super::addVel( double x, double y)
+bool Super::addVel( double x, double y)
 {
-    player.addVel(x,y);
+    return player.addVel(x,y);
 }
 
 void Super::addBackground()

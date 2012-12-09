@@ -61,13 +61,15 @@ void Character::display()
     }
 }
 
-void Character::addVel( double x, double y)
+bool Character::addVel( double x, double y)
 {
     if( onPlatform() )
     {
         m_vel.sx(m_vel.x() + x );
         m_vel.sy(m_vel.y() + y );
+        return true;
     }
+    return false;
 }
 
 void Character::update(double new_time)

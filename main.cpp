@@ -69,8 +69,10 @@ int main()
                                 }
                                 else if ( Event.Key.Code == sf::Key::Up )
                                 {
-                                    super.addVel(0, -1750);
-                                    jumpSound.Play();
+                                    if( super.addVel(0, -1750) )
+									{
+										jumpSound.Play();
+									}
                                 }
                                 else if ( Event.Key.Code == sf::Key::Down )
                                 {

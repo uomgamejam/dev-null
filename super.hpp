@@ -28,7 +28,7 @@ class Super{
 		int numW();
 		Wall getW(int index);
 		void deleteW(int index);
-		void addVel( double x, double y);
+		bool addVel( double x, double y);
 		void display();
 		void addBackground();
 		void createWall();
@@ -37,6 +37,7 @@ class Super{
 		void deleteS(int index);
 		bool stop;
 		sf::Font textFont;
+
 		
 		double score;
 		int tokens;

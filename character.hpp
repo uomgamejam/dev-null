@@ -21,7 +21,7 @@ class Character
 		const void* const thesuper;
 		int collision(Platform platform, double offsety);
 		void sx( int x );
-		void addVel( double x, double y);
+		bool addVel( double x, double y);
 		bool simpleCollision(Upgrade upgrade);
 		bool simpleCollision(Wall wall);
 		bool attaq();
