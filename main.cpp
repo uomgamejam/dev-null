@@ -64,6 +64,9 @@ int main()
 			super.update();
             window.Clear();
             
+            sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
+            window.Draw(rect);
+            
             std::stringstream converter;
             //converter.flush();
             converter << super.score;
@@ -71,8 +74,6 @@ int main()
             printText(100, 100, scoretext, 10, &window, &super);
             printText(200,200,"text",100,&window,&super);
             
-            sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
-            window.Draw(rect);
             super.display();
             window.Display();
 
@@ -94,6 +95,7 @@ void printText(int x, int y, std::string content, int size, sf::RenderWindow* wi
 	text.SetRotation(90.0f);
 	text.SetScale(2.0f, 2.0f);
 	text.Move(x, y);
+	text.SetText("HI");
 	
 	window->Draw(text);
 }
