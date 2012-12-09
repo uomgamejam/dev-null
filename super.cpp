@@ -6,6 +6,7 @@ Super::Super(sf::RenderWindow* window): player(this, window), clock()
     m_window = window;
     clock.Reset();
     platforms.push_back(new Platform(m_window));
+    platforms.back()->setpos(1200, 400);
 
 }
 
@@ -35,10 +36,10 @@ void Super::display()
 
 void Super::createPlatforms()
 {
-  if (platforms.back()->pos().x() + platforms.back()->size().y() + 50 < 600)
+  if (platforms.back()->pos().x() + platforms.back()->size().x() + 100 < 1200)
   {
     platforms.push_back(new Platform(m_window));
-    platforms.back()->setpos(1200, 100);
+    platforms.back()->setpos((rand()%300)+1200, (rand()%200)+350);
   }
 }
 
