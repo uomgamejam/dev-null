@@ -24,6 +24,7 @@ void printText(int x, int y, std::string content, int size, sf::RenderWindow* wi
 
 Super::Super(sf::RenderWindow* window): player(this, window), background(window), clock()
 {
+	score = 0.0;
     m_window = window;
     clock.Reset();
     lastTime = clock.GetElapsedTime();

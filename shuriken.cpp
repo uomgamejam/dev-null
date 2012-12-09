@@ -1,4 +1,4 @@
-#include "Shuriken.hpp"
+#include "shuriken.hpp"
 #include "super.hpp"
 
 Shuriken::Shuriken(void* superclass, sf::RenderWindow* thewindow): thesuper(superclass)

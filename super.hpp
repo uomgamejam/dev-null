@@ -37,6 +37,8 @@ class Super{
 		void deleteS(int index);
 		bool stop;
 		sf::Font textFont;
+		
+		double score;
 
 	protected:
 

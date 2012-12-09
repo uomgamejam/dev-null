@@ -3,6 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include "super.hpp"
 #include "menu.hpp"
@@ -10,8 +11,13 @@
 
 const unsigned int FRAMES_PER_SEC = 40;
 
+
+void printText(int x, int y, std::string content, int size, sf::RenderWindow* window, Super* super);
+	
+
 int main()
 {
+	
     std::ifstream fluxConfig("./resource/configuration.txt" );
     if ( fluxConfig)
     {
@@ -24,6 +30,7 @@ int main()
        //  window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
+		Super super(&window);
 
         sf::Music gameSong;
         sf::Music jumpSound;
@@ -40,7 +47,6 @@ int main()
 
             if( keep)
             {
-                    Super super(&window);
                     while(play){
                         sf::Event Event;
                         while (window.GetEvent(Event))
@@ -88,12 +94,14 @@ int main()
                     keep = gameOver.update();
                 }
             }
-<<<<<<< HEAD
 			super.update();
             window.Clear();
             
             sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
             window.Draw(rect);
+            
+            
+            super.display();
             
             std::stringstream converter;
             //converter.flush();
@@ -102,13 +110,8 @@ int main()
             printText(100, 100, scoretext, 10, &window, &super);
             printText(200,200,"text",100,&window,&super);
             
-            super.display();
             window.Display();
-
-		}
-=======
         }
->>>>>>> f53ccde4fbad038ed9512d22e3345c1d7f69e5e5
     }
     else
     {
@@ -117,7 +120,6 @@ int main()
 
     return 0;
 }
-<<<<<<< HEAD
 
 void printText(int x, int y, std::string content, int size, sf::RenderWindow* window, Super* super){
 	
@@ -131,5 +133,3 @@ void printText(int x, int y, std::string content, int size, sf::RenderWindow* wi
 	
 	window->Draw(text);
 }
-=======
->>>>>>> f53ccde4fbad038ed9512d22e3345c1d7f69e5e5
