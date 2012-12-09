@@ -25,7 +25,27 @@ int main()
         window.SetFramerateLimit(FRAMES_PER_SEC);
 
 		while(1){
-			// std::cout << framecounter ++ << std::endl;
+            sf::Event Event;
+            while (window.GetEvent(Event))
+            {
+                if (Event.Type == sf::Event::Closed)
+                {
+                    window.Close();
+                    break;
+                }
+                if( Event.Type == sf::Event::KeyPressed)
+                {
+                    if (Event.Key.Code == sf::Key::Escape)
+                    {
+                        window.Close();
+                        break;
+                    }
+                    else if ( Event.Key.Code == sf::Key::Up )
+                    {
+                        super.addAcc(0, -25000);
+                    }
+                }
+            }
 			super.update();
 			window.Clear();
 			sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));

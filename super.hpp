@@ -17,7 +17,7 @@ class Super{
 		void update();
 		int numP();
 		Platform getP(int index);
-
+		void addAcc( double x, double y);
 		void display();
 
 	protected:
