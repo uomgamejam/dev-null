@@ -62,7 +62,7 @@ void Character::update(double new_time)
     {
         Platform platform = ((Super*)thesuper)->getP(i);
         int distance = collision(platform);
-        if( collision(platform) != 0)
+        if( collision(platform) != -1)
         {
             m_pos.sy(m_pos.y() - distance);
             m_vel.sy(0);
@@ -99,12 +99,12 @@ bool Character::onPlatform()
 int Character::collision(Platform platform)
 {
     if(  m_pos.x() + m_size.x() < platform.pos().x()
-       || m_pos.y() + 166 + m_size.y() < platform.pos().y()
+       || m_pos.y() + 186  < platform.pos().y()
        || m_pos.x() > platform.pos().x() + platform.size().x()
        || m_pos.y() + 166 > platform.pos().y() + platform.size().y()  )
     {
         // std::cout<<  m_pos.x() << "  " << m_pos.y() << "   " <<  m_size.x() << "   " <<  m_size.y() << "   " <<   platform.pos().x() << "  " <<  platform.pos().y() << "   " <<  platform.size().x() << "   " <<  platform.size().y() << std::endl;
-        return 0;
+        return -1;
     }
     else if ( m_vel.y() > -1 )
     {
@@ -113,7 +113,7 @@ int Character::collision(Platform platform)
     }
     else
     {
-        return 0;
+        return -1;
     }
 }
 

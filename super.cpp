@@ -79,3 +79,8 @@ Platform Super::getP(int index)
     iter++;
   return *(*iter);
 }
+
+void Super::addAcc( double x, double y)
+{
+    player.addAcc(x,y);
+}
