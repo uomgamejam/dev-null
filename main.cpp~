@@ -26,7 +26,9 @@ int main()
         window.SetFramerateLimit(FRAMES_PER_SEC);
        
         sf::Music gameSong;
-        gameSong.OpenFromFile("music_gameplay.wav");
+        sf::Music jump
+        gameSong.OpenFromFile("resource/sounds/music_gameplay.wav");
+        jump.OpenFromFile("resource/sounds/jump.wav");
         gameSong.SetLoop(true);
         gameSong.Play();
 
@@ -49,6 +51,7 @@ int main()
                     }
                     else if ( Event.Key.Code == sf::Key::Up )
                     {
+                        jump.Play();
                         super.addVel(0, -1750);
                     }
                 }
