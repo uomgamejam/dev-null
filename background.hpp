@@ -30,8 +30,6 @@ class Background
 		sf::Image backgroundimage[11];
 		sf::Sprite backgroundsprite[22];
 		sf::RenderWindow* window;
-
-
 };
 
 #endif

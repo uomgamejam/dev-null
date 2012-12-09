@@ -1,11 +1,10 @@
-
-#include "Wall.hpp"
+#include "wall.hpp"
 
 Wall::Wall(sf::RenderWindow* thewindow)
 {
 	window = thewindow;
 
-	if (!wallimage.LoadFromFile("resource/sprites/wall1.png"))
+	if (!wallimage.LoadFromFile("resource/sprites/mental_block.png"))
 	{
 		// Error...
 		std::cout<< " error" << std::endl;
@@ -16,7 +15,7 @@ Wall::Wall(sf::RenderWindow* thewindow)
 	}
 
 	m_pos.reset();
-	m_size.sxyz(200.0, 31, 0.0);
+	m_size.sxyz(31, 200, 0);
 }
 
 Wall::Wall(double x, double y, double w, double h)
@@ -30,7 +29,7 @@ Wall::~Wall()
 	// Nothing to free
 }
 
-void Wall::update(double time)
+void Wall::update(double offset)
 {
 	//TODO:
 }

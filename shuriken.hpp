@@ -3,20 +3,21 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-#ifndef __WALL__HPP__
-#define __WALL__HPP__
+#ifndef __SHURIKEN__HPP__
+#define __SHURIKEN__HPP__
+#include "wall.hpp"
 
-class Wall
+class Shuriken
 {
 
 	public:
-		Wall(sf::RenderWindow*);
-		Wall(double, double, double, double);
-		~Wall();
+		Shuriken(void* superclass, sf::RenderWindow*);
+		~Shuriken();
 
 		void update(double);
 		void display();
 
+        bool simpleCollision(Wall wall, double offsety);
 
 		// Set
 		void setpos(double, double);
@@ -26,17 +27,24 @@ class Wall
 		const vector3d& pos();
 		const vector3d& size();
 
+		const void* const thesuper;
+
 
 	protected:
 
 
 	private:
 		vector3d m_pos;
+		vector3d m_vel;
 		vector3d m_size;
 
-		sf::Image wallimage;
-		sf::Sprite wallsprite;
+		sf::Image shurikenimage;
+		sf::Sprite shurikensprite;
 		sf::RenderWindow* window;
+
+		double lastTime;
+		bool first;
 };
 
 #endif
+

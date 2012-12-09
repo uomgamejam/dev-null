@@ -3,14 +3,12 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
-#include <sstream>
 
 #include "super.hpp"
+#include "menu.hpp"
+#include "gameOver.hpp"
 
 const unsigned int FRAMES_PER_SEC = 40;
-static unsigned long framecounter = 0;
-
-void printText(int, int, std::string, int size, sf::RenderWindow* window, Super* super);
 
 int main()
 {
@@ -23,11 +21,10 @@ int main()
         fluxConfig >> heightW;
 
         sf::RenderWindow window(sf::VideoMode(widthW, heightW, 32), "Game");
-		Super super = Super(&window);
        //  window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
-        
+
         sf::Music gameSong;
         sf::Music jumpSound;
         gameSong.OpenFromFile("resource/sounds/music_gameplay.wav");
@@ -35,32 +32,63 @@ int main()
         gameSong.SetLoop(true);
         gameSong.Play();
 
-        double lastTime = 0, elapsedTime = 0;
+        bool keep = true;
+		while(keep){
+		    Menu menu(&window);
+		    bool play = menu.update();
+            keep = play;
 
-		while(window.IsOpened()){
-            sf::Event Event;
-            while (window.GetEvent(Event))
+            if( keep)
             {
-                if (Event.Type == sf::Event::Closed)
-                {
-                    window.Close();
-                    break;
-                }
-                if( Event.Type == sf::Event::KeyPressed)
-                {
-                    if (Event.Key.Code == sf::Key::Escape)
-                    {
-                        window.Close();
-                        break;
-                    }
-                    else if ( Event.Key.Code == sf::Key::Up )
-                    {
-                        super.addVel(0, -1750);
-                        jumpSound.Play();
+                    Super super(&window);
+                    while(play){
+                        sf::Event Event;
+                        while (window.GetEvent(Event))
+                        {
+                            if (Event.Type == sf::Event::Closed)
+                            {
+                                window.Close();
+                                keep = false;
+                                break;
+                            }
+                            if( Event.Type == sf::Event::KeyPressed)
+                            {
+                                if (Event.Key.Code == sf::Key::Escape)
+                                {
+                                    window.Close();
+                                    keep = false;
+                                    break;
+                                }
+                                else if ( Event.Key.Code == sf::Key::Up )
+                                {
+                                    super.addVel(0, -1750);
+                                    jumpSound.Play();
+                                }
+                                else if ( Event.Key.Code == sf::Key::Down )
+                                {
+                                    super.attaq();
+                                }
+
+                            }
+                        }
+                        super.update();
+                        window.Clear();
+                        sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
+                        window.Draw(rect);
+                        super.display();
+                        window.Display();
+                        if ( super.stop == true )
+                            play = false;
                     }
 
+
+                if( keep )
+                {
+                    GameOver gameOver(&window);
+                    keep = gameOver.update();
                 }
             }
+<<<<<<< HEAD
 			super.update();
             window.Clear();
             
@@ -78,6 +106,9 @@ int main()
             window.Display();
 
 		}
+=======
+        }
+>>>>>>> f53ccde4fbad038ed9512d22e3345c1d7f69e5e5
     }
     else
     {
@@ -86,6 +117,7 @@ int main()
 
     return 0;
 }
+<<<<<<< HEAD
 
 void printText(int x, int y, std::string content, int size, sf::RenderWindow* window, Super* super){
 	
@@ -99,3 +131,5 @@ void printText(int x, int y, std::string content, int size, sf::RenderWindow* wi
 	
 	window->Draw(text);
 }
+=======
+>>>>>>> f53ccde4fbad038ed9512d22e3345c1d7f69e5e5
