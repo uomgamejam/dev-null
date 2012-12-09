@@ -31,7 +31,7 @@ void Upgrade::update()
     */
 }
 
-const vector3d& const Upgrade::pos()
+const vector3d& Upgrade::pos()
 {
     return m_pos;
 }
@@ -41,7 +41,7 @@ void Upgrade::setpos(const vector3d& newpos)
     m_pos.sxyz(newpos.x(), newpos.y(), 0.0);
 }
 
-const vector3d& const Upgrade::vel()
+const vector3d& Upgrade::vel()
 {
     return m_vel;
 }
@@ -51,13 +51,13 @@ void Upgrade::setvel(const vector3d newvel)
     m_vel.sxyz(newvel.x(), newvel.y(), 0.0);
 }
 
-unsigned uint64_t Upgrade::setUpgradeFlags(UPGRADE_TYPES upgrade)
+void Upgrade::setUpgradeFlags(UPGRADE_TYPE upgrade)
 {
     m_upgrade_flags = 0;
     m_upgrade_flags = 0x1 << upgrade;
 }
 
-void Upgrade::getUpgradeFlags()
+unsigned long Upgrade::getUpgradeFlags()
 {
     return m_upgrade_flags;
 }

@@ -5,7 +5,7 @@
 #define __UPGRADE__HPP__
 
 
-enum UPGRADE_TYPES : uint64_t
+enum UPGRADE_TYPE
 {
     UT_HIGH_G = 0x1,
     UT_LOW_G = 0x2,
@@ -23,14 +23,14 @@ public:
 
     void update();
     //
-    const vector3d& const pos();
+    const vector3d& pos();
     void setpos(const vector3d& newpos);
     //
-    const vector3d& const vel();
+    const vector3d& vel();
     void setvel(const vector3d newvel);
     //
-    unsigned uint64_t setUpgradeFlags(UPGRADE_TYPES upgrade);
-    void getUpgradeFlags();
+    void setUpgradeFlags(UPGRADE_TYPE upgrade);
+    unsigned long getUpgradeFlags();
 
 
 
@@ -41,7 +41,7 @@ protected:
 private:
     vector3d m_pos;
     vector3d m_vel;
-    uint64_t m_upgrade_flags;
+    unsigned long m_upgrade_flags;
 
 
 };
