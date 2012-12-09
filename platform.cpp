@@ -37,7 +37,6 @@ void Platform::update(double timestep)
 
 void Platform::display()
 {
-	// platformsprite.Resize(m_size.x(), m_size.y());
     platformsprite.SetX(m_pos.x());
     platformsprite.SetY(m_pos.y());
 	window->Draw(platformsprite);

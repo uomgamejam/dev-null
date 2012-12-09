@@ -20,10 +20,11 @@ int main()
 
         sf::RenderWindow window(sf::VideoMode(widthW, heightW, 32), "Game");
 		Super super = Super(&window);
-        window.UseVerticalSync(true);
+       //  window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
 
+        double lastTime = 0, elapsedTime = 0;
 		while(1){
             sf::Event Event;
             while (window.GetEvent(Event))
@@ -42,16 +43,17 @@ int main()
                     }
                     else if ( Event.Key.Code == sf::Key::Up )
                     {
-                        super.addAcc(0, -25000);
+                        super.addVel(0, -1750);
                     }
                 }
             }
 			super.update();
-			window.Clear();
-			sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
-			window.Draw(rect);
-			super.display();
-			window.Display();
+            window.Clear();
+            sf::Shape rect = sf::Shape::Rectangle(0, 0, 1200, 600, sf::Color(255, 255, 255, 255));
+            window.Draw(rect);
+            super.display();
+            window.Display();
+
 		}
     }
     else

@@ -18,9 +18,9 @@ Super::~Super()
 
 void Super::update()
 {
-  double time = clock.GetElapsedTime();
-  movePlayer(time);
-  moveAll(time);
+  double newTime = clock.GetElapsedTime();
+  movePlayer(newTime);
+  moveAll(newTime);
   createPlatforms();
   removePlatforms();
 }
@@ -65,11 +65,11 @@ void Super::moveAll(double time)
   background.update(speed);
   for (i = 0; i < platforms.size(); i ++)
   {
-    (*iter)->setpos((*iter)->pos().x() - (4 * speed), (*iter)->pos().y());
+    (*iter)->setpos((*iter)->pos().x() - player.offset(), (*iter)->pos().y());
     iter ++;
   }
   player.sx(player.pos().x() - player.offset());
-  
+
   lastTime = time;
 }
 
@@ -86,7 +86,7 @@ Platform Super::getP(int index)
   return *(*iter);
 }
 
-void Super::addAcc( double x, double y)
+void Super::addVel( double x, double y)
 {
-    player.addAcc(x,y);
+    player.addVel(x,y);
 }

@@ -17,9 +17,9 @@ class Character
         int offset();
         void display();
 		const void* const thesuper;
-		int collision(Platform platform);
+		int collision(Platform platform, double offsety);
 		void sx( int x );
-		void addAcc( double x, double y);
+		void addVel( double x, double y);
 		const vector3d& pos()
 		{
 		    return m_pos;

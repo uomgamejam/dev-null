@@ -8,27 +8,27 @@
 
 class Background
 {
-	
+
 	public:
 		Background(sf::RenderWindow*);
 		Background(double, double);
 		~Background();
-		
+
 		void update(double speed);
 		void display();
-		
+
 		void setpos(double, double);
-		
-		
+
+
 	protected:
-	
+
 	private:
 		int i;
-		vector3d m_pos;
+		vector3d m_pos[10];
 		sf::Image backgroundimage[10];
 		sf::Sprite backgroundsprite[20];
 		sf::RenderWindow* window;
-		
+
 };
 
 #endif

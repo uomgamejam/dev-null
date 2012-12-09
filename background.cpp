@@ -25,14 +25,15 @@ Background::Background(sf::RenderWindow* thewindow)
 	    backgroundsprite[i].SetImage(backgroundimage[i]);
 	    backgroundsprite[i+10].SetImage(backgroundimage[i]);
 	  }
-	}	
-
-	m_pos.reset();
+	}
+    for (i = 0; i < 10; i ++)
+        m_pos[i].reset();
 }
 
 Background::Background(double x, double y)
 {
-	m_pos.sxyz(x, y, 0.0);
+    for (i = 0; i < 10; i ++)
+        m_pos[i].sxyz(x, y, 0.0);
 }
 
 Background::~Background()
@@ -42,23 +43,30 @@ Background::~Background()
 
 void Background::update(double speed)
 {
-	m_pos.sx(m_pos.x() - speed);
-	if (m_pos.x() + 1200 < 0)
-	  m_pos.sx(0);
-	
+    for( int i = 0; i < 10; i++)
+    {
+        m_pos[i].sx(m_pos[i].x() - i * speed);
+        if (m_pos[i].x() + 1200 < 0)
+          m_pos[i].sx(0);
+    }
+
 	for (i = 0; i < 10; i ++)
-          backgroundsprite[i].SetPosition(m_pos.x(), m_pos.y());
-        for (i = 10; i < 20; i ++)
-          backgroundsprite[i].SetPosition(m_pos.x() + 1200, m_pos.y());	  
+          backgroundsprite[i].SetPosition(m_pos[i].x(), m_pos[i].y());
+    for (i = 10; i < 20; i ++)
+          backgroundsprite[i].SetPosition(m_pos[i-10].x() + 1200, m_pos[i-10].y());
 }
 
 void Background::display()
 {
-	for (i = 0; i < 20; i ++)
+	for (i = 0; i < 10; i ++)
+	{
 	  window->Draw(backgroundsprite[i]);
+	  window->Draw(backgroundsprite[i+10]);
+	}
 }
 
 void Background::setpos(double xIn, double yIn)
 {
-	m_pos.sxyz(xIn, yIn, 0.0);
+    for (i = 0; i < 10; i ++)
+        m_pos[i].sxyz(xIn, yIn, 0.0);
 }

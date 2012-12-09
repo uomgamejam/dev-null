@@ -17,7 +17,7 @@ class Super{
 		void update();
 		int numP();
 		Platform getP(int index);
-		void addAcc( double x, double y);
+		void addVel( double x, double y);
 		void display();
 
 	protected:
@@ -34,7 +34,7 @@ class Super{
 		void createPlatforms();
 
 		void removePlatforms();
-		
+
 		void shiftBackground();
 
         void movePlayer(double time);
