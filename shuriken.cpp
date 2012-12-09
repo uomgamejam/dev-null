@@ -28,12 +28,17 @@ Shuriken::~Shuriken()
 }
 
 void Shuriken::update(double time)
-{
+{	
     double step_time = 0;
     if( !first)
     {
         step_time = time - lastTime;
         m_pos += m_vel * step_time;
+        
+        //shurikensprite.Move(+15.0, +15.0);
+        shurikensprite.Rotate(113.0);
+        shurikensprite.SetCenter(15,15);
+        //shurikensprite.Move(-15.0, -15.0);
     }
 	lastTime = time;
 	first = false;

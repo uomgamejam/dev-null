@@ -34,6 +34,7 @@ Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(supe
     nbTokens = 0;
     scoreTime = 0;
     nbShurikan = 2;
+    m_last_time = 0;
 }
 
 Character::~Character()

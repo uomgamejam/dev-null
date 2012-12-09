@@ -44,7 +44,7 @@ int main()
 		    bool play = menu.update();
             keep = play;
 
-            if( keep)
+            if(keep)
             {
 				    Super super(&window);
                     while(play){

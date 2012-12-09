@@ -53,7 +53,7 @@ void Upgrade::display()
 {
     upgradesprite.SetX(m_pos.x());
     upgradesprite.SetY(m_pos.y());
-    upgradesprite.SetSubRect(sf::IntRect( 0, 0, 50, 50));
+    upgradesprite.SetSubRect(sf::IntRect( 0, 0, 50, 60));
 	m_window->Draw(upgradesprite);
 }
 

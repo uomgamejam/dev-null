@@ -68,7 +68,7 @@ void Super::createWall()
     while( walls.size() < 4 )
     {
         walls.push_back(new Wall(m_window));
-        walls[walls.size()-1]->setpos(distance_last_wall + distance_wall, 400);
+        walls[walls.size()-1]->setpos(distance_last_wall + distance_wall, (rand() % 200) + 300);
         distance_last_wall += distance_wall;
     }
 }
@@ -142,7 +142,7 @@ void Super::createPlatforms()
         platforms.back()->setpos(posX, posY);
         if( rand()%5 == 0 )
         {
-            upgrades.push_back(new Upgrade(posX+125, posY-50, m_window));
+            upgrades.push_back(new Upgrade(posX+125, posY-70, m_window));
         }
   }
 }
