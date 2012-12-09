@@ -24,6 +24,7 @@ class Super{
 		void deleteU(int index);
 		void addVel( double x, double y);
 		void display();
+		void addBackground();
 
 	protected:
 
@@ -42,8 +43,6 @@ class Super{
 		void removePlatforms();
 
 		void shiftBackground();
-		
-		void addBackground();
 
         void movePlayer(double time);
 

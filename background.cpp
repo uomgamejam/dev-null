@@ -3,7 +3,7 @@
 Background::Background(sf::RenderWindow* thewindow)
 {
 	window = thewindow;
-	maxLayer = 2;
+	maxLayer = 1;
 
 	if (!backgroundimage[0].LoadFromFile("resource/sprites/background_assets/background_sky.png")
 	    || !backgroundimage[1].LoadFromFile("resource/sprites/background_assets/background_mountains_back.png")
@@ -52,7 +52,7 @@ void Background::update(double speed)
         if( m_pos[i].y() > 0 )
            m_pos[i].sy(m_pos[i].y() - 2 * speed);
     }
-    
+
     m_pos[9].sx(m_pos[9].x() - i * speed);
     if (m_pos[9].x() + 1200 < 0)
       m_pos[9].sx(0);
@@ -62,17 +62,19 @@ void Background::update(double speed)
 
 	for (i = 0; i < maxLayer; i ++)
           backgroundsprite[i].SetPosition(m_pos[i].x(), m_pos[i].y());
-    for (i = 10; i < MaxLayer+10; i ++)
+    for (i = 10; i < maxLayer+10; i ++)
           backgroundsprite[i].SetPosition(m_pos[i-10].x() + 1200, m_pos[i-10].y());
 }
 
 void Background::display()
 {
-	for (i = 0; i < 10; i ++)
+	for (i = 0; i < maxLayer; i ++)
 	{
 	  window->Draw(backgroundsprite[i]);
 	  window->Draw(backgroundsprite[i+10]);
 	}
+	 window->Draw(backgroundsprite[9]);
+     window->Draw(backgroundsprite[19]);
 }
 
 void Background::setpos(double xIn, double yIn)
@@ -85,7 +87,7 @@ void Background::addLayer()
 {
     if(maxLayer < 9 )
     {
-   	 maxLayer += 1;
+        maxLayer += 1;
     	m_pos[maxLayer-1].sy(600);
     }
 }

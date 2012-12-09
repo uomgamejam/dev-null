@@ -24,7 +24,6 @@ void Super::update()
   moveAll(newTime);
   createPlatforms();
   removePlatforms();
-  addBackground();
 }
 
 void Super::display()

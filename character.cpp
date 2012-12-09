@@ -117,6 +117,7 @@ void Character::update(double new_time)
             else if ( upgrade_temp.getUpgradeFlags() == UT_IDEA)
             {
                 std::cout<<"ok2" << std::endl;
+                ((Super*)thesuper)->addBackground();
             }
             else if( upgrade_temp.getUpgradeFlags() == UT_WEAPON)
             {
