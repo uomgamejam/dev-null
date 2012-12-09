@@ -31,6 +31,7 @@ class Background
 		sf::Sprite backgroundsprite[22];
 		sf::RenderWindow* window;
 
+
 };
 
 #endif

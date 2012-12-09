@@ -3,7 +3,6 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 
 #include "platform.hpp"
 #include "upgrade.hpp"
@@ -44,7 +43,9 @@ class Character
 		double m_offset;
 		double m_frame, m_last_frame_time, m_frame_time;
 		double x,y,z;
-		sf::Music pickupFX;
+		double scoreTime;
+		int nbTokens;
+
 };
 
 #endif

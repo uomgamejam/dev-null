@@ -4,7 +4,6 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 
 Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(superclass)
 {
@@ -31,9 +30,8 @@ Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(supe
     m_frame = 0;
     m_last_frame_time = 0;
     m_frame_time = 0.01;
-    
-    pickupFX.OpenFromFile("resource/sounds/pickup_collect.wav");
-
+    nbTokens = 0;
+    scoreTime = 0;
 }
 
 Character::~Character()
@@ -72,6 +70,7 @@ void Character::addVel( double x, double y)
 void Character::update(double new_time)
 {
     double step_time = new_time - m_last_time;
+    scoreTime += step_time;
     //m_vel.sx(m_vel.x() + m_acc.x() * step_time );
     //m_vel.sy(m_vel.y() + m_acc.y() * step_time );
     m_vel += m_acc * step_time;
@@ -111,6 +110,7 @@ void Character::update(double new_time)
         Upgrade upgrade_temp = ((Super*)thesuper)->getU(i);
         if( simpleCollision(upgrade_temp))
         {
+            nbTokens++;
             std::cout<<"ok1     " << upgrade_temp.getUpgradeFlags() << std::endl;
             if( upgrade_temp.getUpgradeFlags() == UT_CLOTHING)
             {
@@ -180,7 +180,6 @@ bool Character::simpleCollision(Upgrade upgrade)
        else
        {
            return true;
-           pickupFX.Play();
        }
 }
 

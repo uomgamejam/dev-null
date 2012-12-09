@@ -38,7 +38,6 @@ class Super{
 		int i;
 		double lastTime;
 		sf::RenderWindow* m_window;
-		sf::Music mountainFX;
 
 		void createPlatforms();
 
