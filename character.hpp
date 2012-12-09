@@ -6,6 +6,7 @@
 
 #include "platform.hpp"
 #include "upgrade.hpp"
+#include "wall.hpp"
 
 
 class Character
@@ -22,6 +23,8 @@ class Character
 		void sx( int x );
 		void addVel( double x, double y);
 		bool simpleCollision(Upgrade upgrade);
+		bool simpleCollision(Wall wall);
+		bool attaq();
 		const vector3d& pos()
 		{
 		    return m_pos;
@@ -45,6 +48,7 @@ class Character
 		double x,y,z;
 		double scoreTime;
 		int nbTokens;
+		int nbShurikan;
 
 };
 

@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 
-typedef enum UPGRADE_TYPE
+enum UPGRADE_TYPE
 {
     UT_HIGH_G = 0x1,
     UT_LOW_G = 0x2,
@@ -16,7 +16,7 @@ typedef enum UPGRADE_TYPE
     UT_IDEA = 0x4,
     UT_WEAPON = 0x5
     //PUT other pugrade flags here
-}UPGRADE_TYPE;
+};
 
 
 class Upgrade{

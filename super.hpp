@@ -7,6 +7,8 @@
 #include "upgrade.hpp"
 #include <vector>
 #include <SFML/Audio.hpp>
+#include "wall.hpp"
+#include "shuriken.hpp"
 
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
@@ -23,12 +25,18 @@ class Super{
 		int numU();
 		Upgrade getU(int index);
 		void deleteU(int index);
+		int numW();
+		Wall getW(int index);
+		void deleteW(int index);
 		void addVel( double x, double y);
 		void display();
 		void addBackground();
-		
+		void createWall();
+		void deleteWall();
+		void attaq();
+		void deleteS(int index);
+		bool stop;
 		sf::Font textFont;
-		double score;
 
 	protected:
 
@@ -36,11 +44,15 @@ class Super{
 	private:
 		std::list<Platform*> platforms;
 		std::vector<Upgrade*> upgrades;
+		std::vector<Wall*> walls;
+		std::vector<Shuriken*> shurikens;
 		Character player;
 		Background background;
 		int i;
 		double lastTime;
 		sf::RenderWindow* m_window;
+		int distance_wall;
+		int distance_last_wall;
 
 		void createPlatforms();
 
@@ -53,6 +65,7 @@ class Super{
         void moveAll(double time);
 
         sf::Clock clock;
+
 };
 
 #endif

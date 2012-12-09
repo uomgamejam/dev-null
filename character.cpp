@@ -5,6 +5,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
+
 Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(superclass)
 {
     m_acc = vector3d(0, 5000, 0);
@@ -26,12 +27,13 @@ Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(supe
    }
     upgrade[0] = false;
     upgrade[1] = false;
-    upgrade[2] = false;
+    upgrade[2] = true;
     m_frame = 0;
     m_last_frame_time = 0;
     m_frame_time = 0.01;
     nbTokens = 0;
     scoreTime = 0;
+    nbShurikan = 2;
 }
 
 Character::~Character()
@@ -111,22 +113,29 @@ void Character::update(double new_time)
         if( simpleCollision(upgrade_temp))
         {
             nbTokens++;
-            std::cout<<"ok1     " << upgrade_temp.getUpgradeFlags() << std::endl;
             if( upgrade_temp.getUpgradeFlags() == UT_CLOTHING)
             {
-                std::cout<<"ok2" << std::endl;
-                upgrade[rand()%3] = true;
+                upgrade[rand()%2] = true;
             }
             else if ( upgrade_temp.getUpgradeFlags() == UT_IDEA)
             {
-                std::cout<<"ok2" << std::endl;
                 ((Super*)thesuper)->addBackground();
             }
             else if( upgrade_temp.getUpgradeFlags() == UT_WEAPON)
             {
-                std::cout<<"ok2" << std::endl;
+                upgrade[2] = true;
+                nbShurikan++;
             }
             ((Super*)thesuper)->deleteU(i);
+        }
+    }
+    for( int i = 0; i < ((Super*)thesuper)->numW(); i ++)
+    {
+        Wall wall_temp = ((Super*)thesuper)->getW(i);
+        if( simpleCollision(wall_temp))
+        {
+            ((Super*)thesuper)->stop = true;
+            m_vel.sx(0);
         }
     }
 }
@@ -181,5 +190,36 @@ bool Character::simpleCollision(Upgrade upgrade)
        {
            return true;
        }
+}
+
+bool Character::simpleCollision(Wall wall)
+{
+        if(  m_pos.x() + m_size.x() / 2 - 35 < wall.pos().x()
+       || m_pos.y() + m_size.y() / 2 < wall.pos().y()
+       || m_pos.x() + 35 > wall.pos().x() / 2 + wall.size().x()
+       || m_pos.y()  > wall.pos().y() + wall.size().y()  )
+       {
+           return false;
+       }
+       else
+       {
+           return true;
+       }
+}
+
+bool Character::attaq()
+{
+    if( nbShurikan > 0 )
+    {
+
+      nbShurikan--;
+      if ( nbShurikan == 0 )
+        upgrade[2] = false;
+      return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
