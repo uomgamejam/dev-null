@@ -42,6 +42,8 @@ class Super{
 		void removePlatforms();
 
 		void shiftBackground();
+		
+		void addBackground();
 
         void movePlayer(double time);
 
