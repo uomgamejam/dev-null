@@ -47,17 +47,17 @@ void Background::update(double speed)
 {
     for(i = 0; i < maxLayer; i++)
     {
-        m_pos[i].sx(m_pos[i].x() - i * speed);
+        m_pos[i].sx(m_pos[i].x() - i * speed * 0.5);
         if (m_pos[i].x() + 1200 < 0)
           m_pos[i].sx(0);
         if( m_pos[i].y() > 0 )
-           m_pos[i].sy(m_pos[i].y() - 2 * speed);
+           m_pos[i].sy(m_pos[i].y() - 2 * speed * 0.5);
     }
 
-    m_pos[9].sx(m_pos[9].x() - i * speed);
+    m_pos[9].sx(m_pos[9].x() - i * speed * 0.5);
     if (m_pos[9].x() + 1200 < 0)
       m_pos[9].sx(0);
-    m_pos[19].sx(m_pos[19].x() - i * speed);
+    m_pos[19].sx(m_pos[19].x() - i * speed * 0.5);
     if (m_pos[19].x() + 1200 < 0)
       m_pos[19].sx(0);
 
