@@ -12,6 +12,10 @@ Super::Super(sf::RenderWindow* window): player(this, window), background(window)
     platforms.push_back(new Platform(m_window));
     platforms.back()->setpos(1200, 400);
     background.setpos(0,0);
+    score = 0.0d;
+    if(!textFont.LoadFromFile("resource/font/ubuntu-font-family-0.80/UbuntuMono-R.ttf")){
+		std::cout << "font load error!";
+	}
 }
 Super::~Super()
 {
@@ -87,6 +91,8 @@ void Super::moveAll(double time)
   player.sx(player.pos().x() - player.offset());
 
   lastTime = time;
+  
+  score += time;
 }
 
 int Super::numP()

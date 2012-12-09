@@ -26,6 +26,9 @@ class Super{
 		void addVel( double x, double y);
 		void display();
 		void addBackground();
+		
+		sf::Font textFont;
+		double score;
 
 	protected:
 

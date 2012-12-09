@@ -16,7 +16,7 @@ typedef enum UPGRADE_TYPE
     UT_IDEA = 0x4,
     UT_WEAPON = 0x5
     //PUT other pugrade flags here
-};
+}UPGRADE_TYPE;
 
 
 class Upgrade{
