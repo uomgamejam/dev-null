@@ -1,5 +1,6 @@
 #include "upgrade.hpp"
-#include <String.h>
+#include <string.h>
+#include <SFML/Audio.hpp>
 
 
 Upgrade::Upgrade()

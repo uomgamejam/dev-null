@@ -2,6 +2,7 @@
 #include "platform.hpp"
 #include "background.hpp"
 #include <vector>
+#include <SFML/Audio.hpp>
 
 Super::Super(sf::RenderWindow* window): player(this, window), background(window), clock()
 {
@@ -11,6 +12,7 @@ Super::Super(sf::RenderWindow* window): player(this, window), background(window)
     platforms.push_back(new Platform(m_window));
     platforms.back()->setpos(1200, 400);
     background.setpos(0,0);
+    mountainFX.OpenFromFile("resource/sounds/mountain_appear.wav");
 }
 Super::~Super()
 {
@@ -128,4 +130,5 @@ void Super::addVel( double x, double y)
 void Super::addBackground()
 {
     background.addLayer();
+    mountainFX.Play();
 }

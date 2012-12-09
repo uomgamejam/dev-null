@@ -44,7 +44,6 @@ class Character
 		double m_offset;
 		double m_frame, m_last_frame_time, m_frame_time;
 		double x,y,z;
-		sf::Music pickupFX;
 };
 
 #endif

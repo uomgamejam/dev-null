@@ -4,6 +4,7 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(superclass)
 {
@@ -30,6 +31,8 @@ Character::Character(void* superclass, sf::RenderWindow* window) : thesuper(supe
     m_frame = 0;
     m_last_frame_time = 0;
     m_frame_time = 0.01;
+    
+    pickupFX.OpenFromFile("resource/sounds/pickup_collect.wav");
 
 }
 
@@ -177,6 +180,7 @@ bool Character::simpleCollision(Upgrade upgrade)
        else
        {
            return true;
+           pickupFX.Play();
        }
 }
 

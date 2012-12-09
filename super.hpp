@@ -6,6 +6,7 @@
 #include "background.hpp"
 #include "upgrade.hpp"
 #include <vector>
+#include <SFML/Audio.hpp>
 
 #ifndef __SUPER__HPP__
 #define __SUPER__HPP__
@@ -37,6 +38,7 @@ class Super{
 		int i;
 		double lastTime;
 		sf::RenderWindow* m_window;
+		sf::Music mountainFX;
 
 		void createPlatforms();
 

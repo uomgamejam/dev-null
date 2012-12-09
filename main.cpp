@@ -1,5 +1,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -23,8 +24,16 @@ int main()
        //  window.UseVerticalSync(true);
 
         window.SetFramerateLimit(FRAMES_PER_SEC);
+        
+        sf::Music gameSong;
+        sf::Music jumpSound;
+        gameSong.OpenFromFile("resource/sounds/music_gameplay.wav");
+        jumpSound.OpenFromFile("resource/sounds/jump.wav");
+        gameSong.SetLoop(true);
+        gameSong.Play();
 
         double lastTime = 0, elapsedTime = 0;
+
 		while(1){
             sf::Event Event;
             while (window.GetEvent(Event))
@@ -44,7 +53,9 @@ int main()
                     else if ( Event.Key.Code == sf::Key::Up )
                     {
                         super.addVel(0, -1750);
+                        jumpSound.Play();
                     }
+
                 }
             }
 			super.update();
