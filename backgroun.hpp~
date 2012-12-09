@@ -1,5 +1,0 @@
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
-
-#ifndef __BACKGROUND__HPP__
-#define __BACKGROUND__HPP__
