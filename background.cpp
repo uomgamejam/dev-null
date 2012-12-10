@@ -54,17 +54,16 @@ void Background::update(double speed)
            m_pos[i].sy(m_pos[i].y() - 2 * speed * 0.5);
     }
 
-    m_pos[9].sx(m_pos[9].x() - i * speed * 0.5);
-    if (m_pos[9].x() + 1200 < 0)
-      m_pos[9].sx(0);
-    m_pos[19].sx(m_pos[19].x() - i * speed * 0.5);
-    if (m_pos[19].x() + 1200 < 0)
-      m_pos[19].sx(0);
+    m_pos[10].sx(m_pos[10].x() - 5 * speed * 0.5);
+    if ( m_pos[10].x() + 1200 < 0)
+      m_pos[10].sx(0);
 
 	for (i = 0; i < maxLayer; i ++)
           backgroundsprite[i].SetPosition(m_pos[i].x(), m_pos[i].y());
     for (i = 11; i < maxLayer+11; i ++)
           backgroundsprite[i].SetPosition(m_pos[i-11].x() + 1200, m_pos[i-11].y());
+     backgroundsprite[10].SetPosition(m_pos[10].x(), m_pos[10].y());
+     backgroundsprite[21].SetPosition(m_pos[10].x() + 1200, m_pos[10].y());
 }
 
 void Background::display()
@@ -92,8 +91,11 @@ void Background::addLayer()
     if(maxLayer < 10 )
     {
         maxLayer += 1;
+        m_pos[maxLayer-1].sy(600);
         if( maxLayer == 4)
+        {
             maxLayer += 1;
-    	m_pos[maxLayer-1].sy(600);
+            m_pos[maxLayer-1].sy(600);
+        }
     }
 }

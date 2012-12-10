@@ -65,7 +65,6 @@ bool Menu::update()
             }
             if( Event.Type == sf::Event::MouseButtonPressed )
             {
-                std::cout<< Event.MouseButton.X << "   " << Event.MouseButton.Y << std::endl;
                 if( 557 > Event.MouseButton.X && 339 < Event.MouseButton.X
                    && 444 > Event.MouseButton.Y && 407 < Event.MouseButton.Y)
                    {

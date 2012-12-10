@@ -4,23 +4,7 @@
 #include <vector>
 #include <SFML/Audio.hpp>
 
-/*
-void printText(int x, int y, std::string content, int size, sf::RenderWindow* window, Super* super){
 
-	sf::String text(content, super->textFont, size);
-
-	text.SetColor(sf::Color(0, 255, 0));
-	text.SetRotation(90.0f);
-	text.SetScale(2.0f, 2.0f);
-	text.Move(x, y);
-
-	window->Draw(text);
-
-    if(!textFont.LoadFromFile("resource/font/ubuntu-font-family-0.80/UbuntuMono-R.ttf")){
-    std::cout << "font load error!";
-	}
-}
-*/
 
 Super::Super(sf::RenderWindow* window): player(this, window), background(window), clock()
 {
@@ -42,7 +26,6 @@ Super::Super(sf::RenderWindow* window): player(this, window), background(window)
 
 Super::~Super()
 {
-	// Nothing to free
 	std::list<Platform*>::iterator iter = platforms.begin();
     for (int i = 0; i < platforms.size(); i ++)
     {
@@ -77,10 +60,8 @@ void Super::deleteWall()
 {
     for( int j = 0; j < walls.size(); j++)
     {
-        std::cout<<"deleteWall"<<std::endl;
         if( walls[j]->pos().x() + walls[j]->size().x() < 0)
         {
-            std::cout<<"deleteWall"<<std::endl;
             deleteW(j);
         }
     }
